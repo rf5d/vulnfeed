@@ -20,7 +20,23 @@ ROOT = Path(__file__).parent.parent
 
 @pytest.fixture
 def vendors():
-    return load_config(ROOT / "config.toml")["vendors"]
+    """Свой набор для тестов: боевой config.toml меняется, тесты — нет."""
+    from vulnfeed.models import VendorConfig
+    return [
+        VendorConfig(name="SonicWall", kev_match=["SonicWall"], nvd_keyword="sonicwall"),
+        VendorConfig(name="Cisco", kev_match=["Secure Firewall"], nvd_keyword="cisco"),
+        VendorConfig(name="Dahua", kev_match=["Dahua"], nvd_keyword="dahua"),
+        VendorConfig(name="Ubiquiti", kev_match=["Ubiquiti", "UniFi"], nvd_keyword="unifi"),
+    ]
+
+
+def test_production_config_is_valid():
+    """Боевой конфиг парсится, вендоры на месте, у каждого есть чем искать."""
+    cfg = load_config(ROOT / "config.toml")
+    assert cfg["vendors"], "в config.toml не осталось вендоров"
+    for v in cfg["vendors"]:
+        assert v.kev_match or v.nvd_keyword, f"{v.name}: нечем искать"
+    assert cfg["filters"]["min_cvss"] > 0
 
 
 def test_kev_filters_foreign_vendors(vendors):
@@ -151,3 +167,59 @@ def test_context_splits_and_counts(tmp_path):
     assert ctx["total"] == 3 and ctx["kev_count"] == 3 and ctx["fresh_kev"] == 1
     # счётчики фильтров считают по всем записям, отсортированы по убыванию
     assert ctx["vendors"] == [("Dahua", 2), ("Cisco", 1)]
+
+
+# ---------- курируемая лента и парсеры вендоров ----------
+
+def test_curated_feed_loads_and_every_item_has_source():
+    from vulnfeed.sources import curated
+    items = curated.load(ROOT / "vendor_feed.toml")
+    assert items, "курируемая лента пуста"
+    for i in items:
+        assert i.url.startswith("http"), f"{i.title}: запись без рабочего источника"
+        assert i.kind in curated.VALID_KINDS
+    assert {i.vendor for i in items} >= {"RUCKUS", "Dahua", "TP-Link Omada"}, \
+        "в ленте нет вендоров, ради которых она заведена"
+
+
+def test_curated_rejects_item_without_url(tmp_path):
+    from vulnfeed.sources import curated
+    bad = tmp_path / "feed.toml"
+    bad.write_text('[[item]]\nvendor = "X"\nkind = "eol"\ntitle = "Без ссылки"\n',
+                   encoding="utf-8")
+    with pytest.raises(ValueError, match="url"):
+        curated.load(bad)
+
+
+def test_curated_rejects_unknown_kind(tmp_path):
+    from vulnfeed.sources import curated
+    bad = tmp_path / "feed.toml"
+    bad.write_text('[[item]]\nvendor = "X"\nkind = "слухи"\ntitle = "T"\n'
+                   'url = "https://example.invalid/a"\n', encoding="utf-8")
+    with pytest.raises(ValueError, match="kind"):
+        curated.load(bad)
+
+
+def test_mikrotik_parser_picks_versions_and_dates():
+    from vulnfeed.sources import vendors as vs
+    html = (FIX / "mikrotik_changelogs.html").read_text(encoding="utf-8")
+    items = vs.mikrotik_routeros(html)
+    titles = [i.title for i in items]
+    assert any("7.23.5" in t for t in titles)
+    assert any("6.49.21" in t for t in titles)
+    first = next(i for i in items if "7.23.5" in i.title)
+    assert first.date == "2026-09-04"
+    assert first.vendor == "MikroTik" and first.kind == "fw"
+    assert len({i.title for i in items}) == len(items), "парсер задвоил версии"
+
+
+def test_ubiquiti_parser_reads_posts():
+    from vulnfeed.sources import vendors as vs
+    html = (FIX / "ui_blog.html").read_text(encoding="utf-8")
+    items = vs.ubiquiti_blog(html)
+    assert len(items) == 3, "нестатейная ссылка попала в ленту"
+    top = items[0]
+    assert "Next-Gen Enterprise" in top.title
+    assert top.date == "2026-09-03"
+    assert top.url == "https://blog.ui.com/article/introducing-next-gen-enterprise-networking"
+    assert any(i.kind == "fw" for i in items), "релиз с номером версии не помечен как прошивка"

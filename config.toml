@@ -13,8 +13,7 @@ window_days = 60
 fresh_days = 60
 
 # kev_match — подстроки, по которым ищем в vendorProject + product каталога KEV.
-# Для крупных вендоров сужено до линеек: иначе Cisco тянет в ленту всю свою
-# историю от WebEx до роутеров нулевых. Правь под свой реальный парк.
+# Правь под свой реальный парк: чем уже строки, тем меньше шума.
 # nvd_keyword — строка для keywordSearch в NVD. Пустая = вендор только из KEV.
 
 [[vendors]]
@@ -47,16 +46,6 @@ name = "Hikvision"
 kev_match = ["Hikvision"]
 nvd_keyword = "hikvision"
 
-[[vendors]]
-name = "Cisco"
-kev_match = [
-    "Adaptive Security Appliance",
-    "Firepower",
-    "Secure Firewall",
-    "IOS XE",
-    "Small Business RV",
-]
-nvd_keyword = "cisco secure firewall"
 
 [[vendors]]
 name = "Fortinet"
@@ -68,7 +57,3 @@ name = "Zyxel"
 kev_match = ["Zyxel"]
 nvd_keyword = "zyxel"
 
-[[vendors]]
-name = "SonicWall"
-kev_match = ["SonicWall", "SonicOS"]
-nvd_keyword = "sonicwall"

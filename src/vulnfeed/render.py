@@ -2,10 +2,14 @@
 
 Никакого рантайма на отдаче. GitHub Pages раздаёт /docs как есть.
 
-Записи делятся на две секции. Свежее за окно — сверху, потому что это
-новости. Всё остальное — свёрнутый полный список: KEV не про новизну,
-а про то, что эксплуатируется прямо сейчас, и старая дыра в железе,
-которое годами стоит у клиента, из этого списка выпадать не должна.
+Структура страницы:
+  сводка — топ-10 новостей вендоров и топ-10 уязвимостей, с переходами
+           в полные разделы; новости идут первыми и шире, они важнее;
+  свежее — уязвимости за окно;
+  весь парк — всё остальное, что осталось в KEV, свёрнутым списком.
+
+Отметки «обработано» живут в браузере читателя (localStorage), поэтому
+здесь только проставляются устойчивые id: cve_id и item_key.
 """
 
 from __future__ import annotations
@@ -19,9 +23,10 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 from . import db
 
+TOP = 10
+
 
 def _day(value: str | None) -> str | None:
-    """Привести дату любого из наших форматов к YYYY-MM-DD."""
     return value[:10] if value else None
 
 
@@ -29,6 +34,11 @@ def is_fresh(row: dict, cutoff: str) -> bool:
     """Свежая, если попала в KEV или опубликована в NVD после границы окна."""
     days = [d for d in (_day(row.get("kev_date")), _day(row.get("published"))) if d]
     return any(d >= cutoff for d in days)
+
+
+def _severity(row: dict) -> tuple:
+    """Порядок важности CVE: сначала KEV, потом оценка, потом дата находки."""
+    return (row.get("in_kev") or 0, row.get("cvss") or 0, row.get("first_seen") or "")
 
 
 def collect_context(db_path: str, fresh_days: int = 60, limit: int = 1000) -> dict:
@@ -47,32 +57,38 @@ def collect_context(db_path: str, fresh_days: int = 60, limit: int = 1000) -> di
                ORDER BY e.at DESC LIMIT 40"""
         ).fetchall()]
         items = [dict(r) for r in conn.execute(
-            "SELECT * FROM vendor_item ORDER BY COALESCE(date, first_seen) DESC LIMIT ?",
+            """SELECT * FROM vendor_item
+               ORDER BY hot DESC, COALESCE(date, first_seen) DESC
+               LIMIT ?""",
             (limit,),
         ).fetchall()]
         runs = [dict(r) for r in conn.execute(
-            "SELECT * FROM run ORDER BY at DESC LIMIT 12"
+            "SELECT * FROM run ORDER BY at DESC LIMIT 14"
         ).fetchall()]
 
     fresh = [r for r in rows if is_fresh(r, cutoff)]
     rest = [r for r in rows if not is_fresh(r, cutoff)]
 
-    # Счётчики для кнопок-фильтров: считаем по всем записям, не только свежим.
     counts: dict[str, int] = {}
     for r in rows:
         counts[r["vendor"]] = counts.get(r["vendor"], 0) + 1
-    vendors = sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))
+    for i in items:
+        counts[i["vendor"]] = counts.get(i["vendor"], 0)
 
     return {
+        "top_items": items[:TOP],
+        "top_cves": sorted(fresh, key=_severity, reverse=True)[:TOP],
         "fresh": fresh,
         "rest": rest,
+        "items": items,
+        "events": events,
+        "runs": runs,
         "total": len(rows),
         "kev_count": sum(1 for r in rows if r["in_kev"]),
         "fresh_kev": sum(1 for r in fresh if r["in_kev"]),
-        "vendors": vendors,
-        "events": events,
-        "items": items,
-        "runs": runs,
+        "items_total": len(items),
+        "hot_count": sum(1 for i in items if i["hot"]),
+        "vendors": sorted(counts.items(), key=lambda kv: (-kv[1], kv[0])),
         "fresh_days": fresh_days,
         "cutoff": cutoff,
         "generated": datetime.now(timezone.utc).strftime("%d.%m.%Y %H:%M UTC"),

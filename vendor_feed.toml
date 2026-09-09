@@ -1,0 +1,110 @@
+# Курируемая лента вендоров.
+#
+# Сюда попадает то, что машиной не берётся: RUCKUS держит бюллетени за
+# логином, Dahua отдаёт 403 и закрыта в robots.txt, пресс-раздел TP-Link
+# тоже отвечает 403. Автоматика собирает только MikroTik и Ubiquiti.
+#
+# Правила: у каждой записи обязателен рабочий URL, с которого она взята.
+# Без ссылки запись не добавляется — проверять потом будет нечем.
+# kind: eol (снятие с поддержки/продаж) | new (анонс) | fw (прошивка)
+# hot: true только тому, что требует действия на этой неделе.
+#
+# Файл читается коллектором наравне с парсерами и вливается в ту же таблицу,
+# дедупликация идёт по паре (вендор, URL). Правки видны в истории git.
+
+[[item]]
+vendor = "MikroTik"
+kind = "fw"
+date = "2026-09-04"
+hot = true
+title = "MikroTrick: обход SSH-аутентификации, эксплуатируется в дикой природе"
+url = "https://cert.pl/en/posts/2026/09/vulnerabilities-in-mikrotik-routeros-actively-exploited/"
+body = "Шесть CVE, ключевые CVE-2026-67276 (9.2) и CVE-2026-86060 (9.2). Атаки со 2 сентября по устройствам с SSH наружу. Фиксы: stable 7.24.2, long-term 7.23.4 и 7.23.5, legacy 6.49.21. Проверять учётки, скрипты и планировщик."
+
+[[item]]
+vendor = "MikroTik"
+kind = "eol"
+date = "2026-09-03"
+title = "Ветка RouterOS v6 больше не развивается"
+url = "https://forum.mikrotik.com/t/6-49-21-long-term-is-released/272802"
+body = "Заявлено в теме релиза 6.49.21: активной работы над веткой v6 больше нет, рекомендован переход на v7. Формального EOL-документа вендор не выпускал."
+
+[[item]]
+vendor = "RUCKUS"
+kind = "eol"
+date = "2026-07-13"
+title = "SmartZone 7.2.0 снимает с поддержки крупный парк точек"
+url = "https://support.ruckuswireless.com/documents/5976-ruckus-smartzone-lt-ga-release-notes-7-2-0"
+body = "C110, H320, H510, M510, R320, R510, R610, R710, R720, R730, T310c/d/n/s — новая ветка их не поддерживает, патчи только до 6.1.2. Самое дорогое EOL в списке."
+
+[[item]]
+vendor = "RUCKUS"
+kind = "eol"
+date = "2026-04-30"
+title = "ICX7150-C12P, C10ZP и 48ZP — окно отгрузок закрылось"
+url = "https://support.ruckuswireless.com/documents/5701-ruckus-end-of-sale-announcement-ruckus-icx-icx7150-c12p-icx7150-c10zp-icx7150-48zp"
+body = "Объявлено 09.10.2025, EOS 15.01.2026, последняя отгрузка 30.04.2026. Склад больше не пополняется."
+
+[[item]]
+vendor = "RUCKUS"
+kind = "eol"
+date = "2026-03-15"
+title = "Точки T670 и R850 сняты с продаж"
+url = "https://support.ruckuswireless.com/documents/5938-ruckus-end-of-sale-announcement-for-t670-and-r850-access-points"
+body = "Объявлено 02.03.2026, последняя отгрузка прошла 15.03.2026."
+
+[[item]]
+vendor = "RUCKUS"
+kind = "new"
+date = "2026-07-01"
+title = "Belden закрыл покупку RUCKUS за $1,85 млрд"
+url = "https://www.ruckusnetworks.com/press-releases/2026/belden-completes-acquisition-of-ruckus-networks/"
+body = "Смена владельца — ждать пересмотра канальной политики и условий дистрибуции."
+
+[[item]]
+vendor = "TP-Link Omada"
+kind = "eol"
+date = "2026-06-24"
+title = "Список EOL V8: контроллеры OC200 и OC300 вне сервисного окна"
+url = "https://static.tp-link.com/upload/manual/2026/202606/20260624/US%20EOL%20List_Business_V8.pdf"
+body = "Сервис закончился 26.02 и 27.03.2026. Там же ER605 v2.20, EAP225-Outdoor v3, EAP235-Wall, EAP772-Outdoor, SG3428MP, SG3452. Отдельно ротация Wi-Fi 7 ревизий: EAP723 2.0 и EAP772 2.0 с EOS 29.06.2026."
+
+[[item]]
+vendor = "TP-Link Omada"
+kind = "new"
+date = "2026-09-02"
+title = "Omada Fusion Pro на CEDIA Expo"
+url = "https://www.omadanetworks.com/us/press/news/22505/"
+body = "Шлюз с Omada Guard VMS и SDN в одном устройстве. Доступность заявлена на октябрь 2026 — есть время встать в очередь."
+
+[[item]]
+vendor = "TP-Link Omada"
+kind = "fw"
+date = "2026-07-15"
+title = "Omada Controller 6.3.0.x — актуальная мажорная ветка"
+url = "https://community.tp-link.com/en/business/forum/topic/245226"
+body = "Предыдущая ветка 6.2.14.x от 18.06.2026. Свежее в канале — адаптация ER7212PC под 6.3.0.60."
+
+[[item]]
+vendor = "Dahua"
+kind = "eol"
+date = "2026-12-31"
+title = "По политике EOS: домофония, интерком и охранное — до 31.12.2026"
+url = "https://www.dahuasecurity.com/uk/newsEvents/productUsePolicy"
+body = "Сетевое транспортное (PFS4218-16ET-190, PFS4226-24ET-240) и дисплеи LM43-S400, LM55-S400 — до 31.12.2027. Даты из документа политики: датированных бюллетеней Dahua не публикует."
+
+[[item]]
+vendor = "Dahua"
+kind = "new"
+date = "2026-09-05"
+title = "IFA Berlin 2026: WITHS, AirShield и WizTalk"
+url = "https://www.prnewswire.com/news-releases/dahua-technology-showcases-integrated-smart-living-and-innovations-at-ifa-berlin-2026-302870256.html"
+body = "Беспроводное наблюдение WITHS, охранная система AirShield на RF-протоколе Airfly, домофоны WizTalk 5 Мп с полноцветной ночью."
+
+[[item]]
+vendor = "Dahua"
+kind = "new"
+date = "2026-07-16"
+title = "Сертификация IEC 62443-4-1"
+url = "https://www.dahuasecurity.com/about-dahua/news-events/news/awards-and-recognitions/dahua-technology-achieves-iec-62443-4-1-certification-for-secure-development-lifecycle-processes"
+body = "Процессы безопасной разработки. Рабочий аргумент в тендерах и на объектах КИИ."

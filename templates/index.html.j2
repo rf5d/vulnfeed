@@ -17,146 +17,271 @@
   *{box-sizing:border-box}
   body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.5 -apple-system,
        BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1080px;margin:0 auto;padding:28px 20px 64px;
-        display:flex;flex-direction:column;gap:30px}
+  .wrap{max-width:1140px;margin:0 auto;padding:26px 20px 72px;
+        display:flex;flex-direction:column;gap:28px}
+  a{color:var(--accent)}
   header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
-         gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line-strong)}
-  h1{margin:0;font-size:26px;letter-spacing:-.02em}
+         gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line-strong)}
+  h1{margin:0;font-size:25px;letter-spacing:-.02em}
   .stamp{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--faint);text-align:right}
-  section{display:flex;flex-direction:column;gap:12px}
+
+  nav{display:flex;flex-wrap:wrap;gap:6px;position:sticky;top:0;z-index:5;
+      background:var(--ground);padding:9px 0;border-bottom:1px solid var(--line)}
+  nav a{font:500 12px ui-monospace,monospace;text-decoration:none;color:var(--muted);
+        padding:5px 10px;border-radius:999px;border:1px solid transparent}
+  nav a:hover{color:var(--accent);border-color:var(--line-strong)}
+  nav .badge{display:inline-block;min-width:18px;text-align:center;margin-left:5px;
+             padding:0 5px;border-radius:999px;background:var(--accent-soft);
+             color:var(--accent);font-size:10.5px;font-weight:700}
+
+  section{display:flex;flex-direction:column;gap:12px;scroll-margin-top:56px}
   .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
   h2{margin:0;font-size:11px;font-weight:600;letter-spacing:.14em;
      text-transform:uppercase;color:var(--faint)}
   .sec-note{font:11.5px ui-monospace,monospace;color:var(--faint)}
+  .sec-note a{text-decoration:none}
   .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
-  .row{display:grid;grid-template-columns:66px 1fr auto;gap:14px;align-items:start;
-       padding:13px 15px;border-top:1px solid var(--line)}
+
+  /* сводка: новости шире и первыми — они важнее уязвимостей */
+  .summary{display:grid;grid-template-columns:1.45fr 1fr;gap:20px;align-items:start}
+  @media (max-width:900px){.summary{grid-template-columns:1fr}}
+
+  .item{display:grid;grid-template-columns:78px 1fr 30px;gap:12px;align-items:start;
+        padding:12px 14px;border-top:1px solid var(--line)}
+  .item:first-child{border-top:none}
+  .item time{font:11.5px ui-monospace,monospace;color:var(--faint);padding-top:2px}
+  .item .ttl{font-size:13.5px;font-weight:600;line-height:1.4}
+  .item .ttl a{text-decoration:none;color:inherit;border-bottom:1px solid var(--line-strong)}
+  .item .ttl a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+  .item .meta{font-size:11.5px;color:var(--muted);margin-top:3px}
+  .item .body{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.5;max-width:74ch}
+  .item.hot{background:var(--bad-soft);box-shadow:inset 3px 0 0 var(--bad)}
+
+  .kind{display:inline-block;font:600 9.5px ui-monospace,monospace;letter-spacing:.07em;
+        padding:2px 6px;border-radius:4px;margin-right:6px;vertical-align:1px}
+  .kind.eol{background:var(--bad-soft);color:var(--bad)}
+  .kind.new{background:var(--accent-soft);color:var(--accent)}
+  .kind.fw{background:var(--warn-soft);color:var(--warn)}
+
+  .row{display:grid;grid-template-columns:60px 1fr auto 30px;gap:12px;align-items:start;
+       padding:12px 14px;border-top:1px solid var(--line)}
   .row:first-child{border-top:none}
-  .score{font:600 15px/1.15 ui-monospace,monospace;text-align:center;padding:5px 0;
+  .score{font:600 14px/1.15 ui-monospace,monospace;text-align:center;padding:5px 0;
          border-radius:6px;background:var(--warn-soft);color:var(--warn)}
   .score.crit{background:var(--bad-soft);color:var(--bad)}
-  .score small{display:block;font-size:9px;letter-spacing:.08em;opacity:.85}
+  .score small{display:block;font-size:8.5px;letter-spacing:.06em;opacity:.85}
   .cid{font:600 12px ui-monospace,monospace}
   .cid a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line-strong)}
   .cid a:hover{color:var(--accent);border-bottom-color:var(--accent)}
-  .vend{font-size:12px;color:var(--muted);margin-top:2px}
-  .desc{font-size:13px;margin-top:5px;max-width:76ch}
-  .chip{display:inline-block;font:600 10.5px ui-monospace,monospace;letter-spacing:.05em;
-        padding:3px 8px;border-radius:999px;white-space:nowrap;
+  .vend{font-size:11.5px;color:var(--muted);margin-top:2px}
+  .desc{font-size:12.5px;margin-top:4px;max-width:74ch;color:var(--muted)}
+  .chip{display:inline-block;font:600 10px ui-monospace,monospace;letter-spacing:.05em;
+        padding:3px 7px;border-radius:999px;white-space:nowrap;
         background:var(--ok-soft);color:var(--ok);margin-bottom:3px}
   .chip.bad{background:var(--bad-soft);color:var(--bad)}
-  .filters{display:flex;flex-wrap:wrap;gap:7px}
+
+  /* кнопка «обработано» */
+  .done{width:24px;height:24px;border-radius:6px;border:1px solid var(--line-strong);
+        background:transparent;color:var(--faint);cursor:pointer;font-size:13px;line-height:1;
+        padding:0;transition:.12s;flex:none}
+  .done:hover{border-color:var(--ok);color:var(--ok);background:var(--ok-soft)}
+  .done:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .is-done{opacity:.42}
+  .is-done .done{border-color:var(--ok);color:var(--ok);background:var(--ok-soft)}
+  body:not(.show-done) .is-done{display:none}
+
+  .filters{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
   .fbtn{font:500 11.5px ui-monospace,monospace;padding:5px 11px;border-radius:999px;
         border:1px solid var(--line-strong);background:transparent;color:var(--muted);
         cursor:pointer;transition:.12s}
   .fbtn:hover{border-color:var(--accent);color:var(--accent)}
   .fbtn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
   .fbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-  details>summary{cursor:pointer;padding:13px 15px;font-size:13px;color:var(--muted);
+  .tools{margin-left:auto;display:flex;gap:7px;align-items:center}
+
+  details>summary{cursor:pointer;padding:12px 14px;font-size:13px;color:var(--muted);
                   list-style:none;user-select:none}
   details>summary::-webkit-details-marker{display:none}
   details>summary::before{content:"▸ ";color:var(--faint)}
   details[open]>summary::before{content:"▾ "}
   details>summary:hover{color:var(--accent)}
-  .ev{display:grid;grid-template-columns:135px 1fr;gap:12px;padding:9px 15px;
+
+  .ev{display:grid;grid-template-columns:132px 1fr;gap:12px;padding:9px 14px;
       border-top:1px solid var(--line);font-size:12.5px}
   .ev:first-child{border-top:none}
   .ev time{font:11.5px ui-monospace,monospace;color:var(--faint)}
-  .note{font-size:12px;color:var(--faint);line-height:1.6;max-width:84ch;margin:0}
-  .empty{padding:24px 15px;text-align:center;color:var(--faint);font-size:13px}
-  .runs{display:flex;flex-wrap:wrap;gap:6px;padding:12px 15px}
+  .note{font-size:12px;color:var(--faint);line-height:1.6;max-width:86ch;margin:0}
+  .empty{padding:22px 14px;text-align:center;color:var(--faint);font-size:13px}
+  .runs{display:flex;flex-wrap:wrap;gap:6px;padding:12px 14px}
   .run{font:11px ui-monospace,monospace;padding:3px 8px;border-radius:4px;
        background:var(--ok-soft);color:var(--ok)}
   .run.fail{background:var(--bad-soft);color:var(--bad)}
   .hidden{display:none!important}
+  .up{align-self:flex-start;font:12px ui-monospace,monospace;color:var(--faint);
+      text-decoration:none}
+  .up:hover{color:var(--accent)}
 </style>
 </head>
 <body>
-<div class="wrap">
+
+{% macro item_row(i, compact=False) %}
+<div class="item{% if i.hot %} hot{% endif %}" data-vendor="{{ i.vendor }}" data-id="v:{{ i.item_key }}">
+  <time>{{ i.date or i.first_seen[:10] }}</time>
+  <div>
+    <div class="ttl"><span class="kind {{ i.kind }}">{{ {'eol':'EOL','new':'АНОНС','fw':'ПРОШИВКА'}[i.kind] }}</span><a href="{{ i.url }}" target="_blank" rel="noopener">{{ i.title }}</a></div>
+    <div class="meta">{{ i.vendor }}{% if i.hot %} · требует действия{% endif %}</div>
+    {% if i.body and not compact %}<div class="body">{{ i.body }}</div>{% endif %}
+  </div>
+  <button class="done" type="button" title="Отметить обработанным" aria-label="Отметить обработанным">✓</button>
+</div>
+{% endmacro %}
+
+{% macro cve_row(c, compact=False) %}
+<div class="row" data-vendor="{{ c.vendor }}" data-id="c:{{ c.cve_id }}">
+  <div class="score {% if c.cvss and c.cvss >= 9.0 %}crit{% endif %}">
+    {{ '%.1f'|format(c.cvss) if c.cvss else '—' }}<small>CVSS</small>
+  </div>
+  <div>
+    <div class="cid"><a href="{{ c.url }}" target="_blank" rel="noopener">{{ c.cve_id }}</a></div>
+    <div class="vend">{{ c.vendor }}{% if c.product %} · {{ c.product }}{% endif %}</div>
+    {% if c.description and not compact %}<div class="desc">{{ c.description }}</div>{% endif %}
+  </div>
+  <div>
+    {% if c.in_kev %}<span class="chip bad">KEV</span>{% endif %}
+    {% if c.ransomware %}<span class="chip bad">ШИФР.</span>{% endif %}
+  </div>
+  <button class="done" type="button" title="Отметить обработанным" aria-label="Отметить обработанным">✓</button>
+</div>
+{% endmacro %}
+
+<div class="wrap" id="top">
 
   <header>
     <div>
       <h1>Трекер уязвимостей и вендоров</h1>
-      <p class="note" style="margin-top:5px">Источники: CISA KEV и NVD. Сборка автоматическая, правки руками затираются следующим прогоном.</p>
+      <p class="note" style="margin-top:5px">Новости вендоров, EOL и EOS, уязвимости из CISA KEV и NVD. Сборка автоматическая, правки руками затираются следующим прогоном.</p>
     </div>
     <div class="stamp">собрано<br><b>{{ generated }}</b></div>
   </header>
 
-  <div class="filters" id="f-vendor" role="group" aria-label="Фильтр по вендору">
-    <button class="fbtn" data-v="all" aria-pressed="true">Все вендоры {{ total }}</button>
+  <nav>
+    <a href="#summary">Сводка</a>
+    <a href="#news">Новости вендоров<span class="badge" data-count="news">{{ items_total }}</span></a>
+    <a href="#fresh">Свежие уязвимости<span class="badge" data-count="fresh">{{ fresh|length }}</span></a>
+    <a href="#park">Весь парк<span class="badge">{{ rest|length }}</span></a>
+    <a href="#changes">Изменения</a>
+    <a href="#runs">Прогоны</a>
+  </nav>
+
+  <div class="filters">
+    <button class="fbtn" data-v="all" aria-pressed="true">Все вендоры</button>
     {% for name, n in vendors %}
-    <button class="fbtn" data-v="{{ name }}" aria-pressed="false">{{ name }} {{ n }}</button>
+    <button class="fbtn" data-v="{{ name }}" aria-pressed="false">{{ name }}{% if n %} {{ n }}{% endif %}</button>
     {% endfor %}
+    <span class="tools">
+      <button class="fbtn" id="toggle-done" aria-pressed="false">Показать обработанные</button>
+      <button class="fbtn" id="reset-done">Сбросить отметки</button>
+    </span>
   </div>
 
-  <section>
+  <!-- ===================== СВОДКА ===================== -->
+  <section id="summary">
     <div class="sec-head">
-      <h2>Свежее · за {{ fresh_days }} дней</h2>
-      <span class="sec-note">{{ fresh|length }} записей · {{ fresh_kev }} в KEV · с {{ cutoff }}</span>
+      <h2>Сводка</h2>
+      <span class="sec-note">{% if hot_count %}{{ hot_count }} требует действия · {% endif %}{{ fresh_kev }} свежих в KEV</span>
     </div>
-    <div class="card" id="fresh-list">
-      {% for c in fresh %}
-      <div class="row" data-vendor="{{ c.vendor }}">
-        <div class="score {% if c.cvss and c.cvss >= 9.0 %}crit{% endif %}">
-          {{ '%.1f'|format(c.cvss) if c.cvss else '—' }}<small>CVSS{{ ' ' ~ c.cvss_version if c.cvss_version }}</small>
+
+    <div class="summary">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="sec-head">
+          <h2>Новости вендоров · последние {{ top_items|length }}</h2>
+          <span class="sec-note"><a href="#news">все {{ items_total }} →</a></span>
         </div>
-        <div>
-          <div class="cid"><a href="{{ c.url }}" target="_blank" rel="noopener">{{ c.cve_id }}</a></div>
-          <div class="vend">{{ c.vendor }}{% if c.product %} · {{ c.product }}{% endif %}</div>
-          {% if c.description %}<div class="desc">{{ c.description }}</div>{% endif %}
-        </div>
-        <div>
-          {% if c.in_kev %}<span class="chip bad">KEV{% if c.kev_date %} · {{ c.kev_date }}{% endif %}</span><br>{% endif %}
-          {% if c.ransomware %}<span class="chip bad">ШИФРОВАЛЬЩИКИ</span>{% endif %}
+        <div class="card" data-list>
+          {% for i in top_items %}{{ item_row(i, compact=True) }}{% else %}
+          <div class="empty">Лента пуста. Проверь vendor_feed.toml и лог прогона.</div>
+          {% endfor %}
+          <div class="empty hidden" data-empty>По этому фильтру записей нет</div>
         </div>
       </div>
-      {% else %}
-      <div class="empty">За окно ничего нового. Это нормальный результат, а не сбой.</div>
-      {% endfor %}
-      <div class="empty hidden" data-empty>По этому вендору за окно записей нет</div>
+
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="sec-head">
+          <h2>Уязвимости · топ {{ top_cves|length }}</h2>
+          <span class="sec-note"><a href="#fresh">все {{ fresh|length }} →</a></span>
+        </div>
+        <div class="card" data-list>
+          {% for c in top_cves %}{{ cve_row(c, compact=True) }}{% else %}
+          <div class="empty">За окно ничего нового</div>
+          {% endfor %}
+          <div class="empty hidden" data-empty>По этому фильтру записей нет</div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section>
+  <!-- ===================== НОВОСТИ ===================== -->
+  <section id="news">
+    <div class="sec-head">
+      <h2>Новости вендоров · EOL, EOS, анонсы, прошивки</h2>
+      <span class="sec-note">{{ items_total }} записей · <a href="#top">наверх</a></span>
+    </div>
+    <div class="card" data-list>
+      {% for i in items %}{{ item_row(i) }}{% else %}
+      <div class="empty">Лента пуста</div>
+      {% endfor %}
+      <div class="empty hidden" data-empty>По этому фильтру записей нет</div>
+    </div>
+    <p class="note">
+      MikroTik и Ubiquiti собираются автоматически. RUCKUS держит бюллетени за логином,
+      Dahua и пресс-раздел TP-Link отвечают 403 — эти записи ведутся вручную
+      в <code>vendor_feed.toml</code>, у каждой обязателен источник.
+    </p>
+  </section>
+
+  <!-- ===================== СВЕЖИЕ CVE ===================== -->
+  <section id="fresh">
+    <div class="sec-head">
+      <h2>Свежие уязвимости · за {{ fresh_days }} дней</h2>
+      <span class="sec-note">{{ fresh|length }} записей · {{ fresh_kev }} в KEV · с {{ cutoff }} · <a href="#top">наверх</a></span>
+    </div>
+    <div class="card" data-list>
+      {% for c in fresh %}{{ cve_row(c) }}{% else %}
+      <div class="empty">За окно ничего нового. Это нормальный результат, а не сбой.</div>
+      {% endfor %}
+      <div class="empty hidden" data-empty>По этому фильтру записей нет</div>
+    </div>
+  </section>
+
+  <!-- ===================== ВЕСЬ ПАРК ===================== -->
+  <section id="park">
     <div class="sec-head">
       <h2>Весь парк · активные угрозы вне окна</h2>
-      <span class="sec-note">{{ rest|length }} записей</span>
+      <span class="sec-note">{{ rest|length }} записей · <a href="#top">наверх</a></span>
     </div>
     <div class="card">
       <details>
-        <summary>Показать полный список по нашим вендорам ({{ rest|length }})</summary>
-        <div id="rest-list">
-          {% for c in rest %}
-          <div class="row" data-vendor="{{ c.vendor }}">
-            <div class="score {% if c.cvss and c.cvss >= 9.0 %}crit{% endif %}">
-              {{ '%.1f'|format(c.cvss) if c.cvss else '—' }}<small>CVSS{{ ' ' ~ c.cvss_version if c.cvss_version }}</small>
-            </div>
-            <div>
-              <div class="cid"><a href="{{ c.url }}" target="_blank" rel="noopener">{{ c.cve_id }}</a></div>
-              <div class="vend">{{ c.vendor }}{% if c.product %} · {{ c.product }}{% endif %}</div>
-              {% if c.description %}<div class="desc">{{ c.description }}</div>{% endif %}
-            </div>
-            <div>
-              {% if c.in_kev %}<span class="chip bad">KEV{% if c.kev_date %} · {{ c.kev_date }}{% endif %}</span><br>{% endif %}
-              {% if c.ransomware %}<span class="chip bad">ШИФРОВАЛЬЩИКИ</span>{% endif %}
-            </div>
-          </div>
-          {% else %}
+        <summary>Показать полный список ({{ rest|length }})</summary>
+        <div data-list>
+          {% for c in rest %}{{ cve_row(c) }}{% else %}
           <div class="empty">Пусто</div>
           {% endfor %}
-          <div class="empty hidden" data-empty>По этому вендору записей нет</div>
+          <div class="empty hidden" data-empty>По этому фильтру записей нет</div>
         </div>
       </details>
     </div>
     <p class="note">
       Здесь то, что вышло за окно новостей, но осталось в KEV — то есть эксплуатируется прямо сейчас.
-      Для парка, который стоит у клиентов годами, этот список важнее верхнего: дыра 2021 года в камере
-      не становится безопасной оттого, что она не новость.
+      Для парка, который стоит у клиентов годами, этот список важнее верхнего.
     </p>
   </section>
 
-  <section>
-    <div class="sec-head"><h2>Что изменилось</h2></div>
+  <!-- ===================== ИЗМЕНЕНИЯ ===================== -->
+  <section id="changes">
+    <div class="sec-head">
+      <h2>Что изменилось</h2>
+      <span class="sec-note"><a href="#top">наверх</a></span>
+    </div>
     <div class="card">
       {% for e in events %}
       <div class="ev">
@@ -169,59 +294,122 @@
     </div>
   </section>
 
-  <section>
-    <div class="sec-head"><h2>Вендоры · EOL, EOS и анонсы</h2></div>
-    <div class="card">
-      {% for i in items %}
-      <div class="ev">
-        <time>{{ i.date or i.first_seen[:10] }}</time>
-        <div><b>{{ i.vendor }}</b> — <a href="{{ i.url }}" target="_blank" rel="noopener">{{ i.title }}</a>
-          {% if i.body %}<div class="note">{{ i.body }}</div>{% endif %}</div>
-      </div>
-      {% else %}
-      <div class="empty">Источники вендорских лент ещё не подключены.</div>
-      {% endfor %}
+  <!-- ===================== ПРОГОНЫ ===================== -->
+  <section id="runs">
+    <div class="sec-head">
+      <h2>Последние прогоны</h2>
+      <span class="sec-note"><a href="#top">наверх</a></span>
     </div>
-  </section>
-
-  <section>
-    <div class="sec-head"><h2>Последние прогоны</h2></div>
     <div class="card"><div class="runs">
       {% for r in runs %}
       <span class="run {% if not r.ok %}fail{% endif %}" title="{{ r.error or '' }}">{{ r.at[5:16]|replace('T',' ') }} {{ r.source }} {{ r.items }}</span>
       {% endfor %}
     </div></div>
-    <p class="note">Красным — источник, который упал. Прогон при этом не прерывается: часть данных лучше, чем ничего, но подставлять старые вместо новых нельзя.</p>
+    <p class="note">
+      Красным — источник, который упал; наведи курсор, чтобы увидеть ошибку. Прогон при этом
+      не прерывается. Ноль записей у вендорского источника обычно значит, что вендор поменял вёрстку.
+    </p>
   </section>
+
+  <p class="note">
+    Отметки «обработано» хранятся в этом браузере и не переносятся на другие устройства:
+    страница статическая, сервера у неё нет. Кнопка «Сбросить отметки» очищает их.
+  </p>
 
 </div>
 
 <script>
 (function(){
   "use strict";
-  var buttons = document.querySelectorAll("#f-vendor .fbtn");
+  var KEY = "vulnfeed:handled";
 
-  function apply(vendor){
-    ["fresh-list", "rest-list"].forEach(function(id){
-      var box = document.getElementById(id);
-      if(!box) return;
+  function load(){
+    try { return new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); }
+    catch (e) { return new Set(); }
+  }
+  function save(set){
+    try { localStorage.setItem(KEY, JSON.stringify(Array.from(set))); }
+    catch (e) { /* приватный режим или запрет хранилища — молча работаем без памяти */ }
+  }
+
+  var handled = load();
+  var vendor = "all";
+
+  function rows(){ return document.querySelectorAll("[data-id]"); }
+
+  function paint(){
+    rows().forEach(function(el){
+      el.classList.toggle("is-done", handled.has(el.getAttribute("data-id")));
+    });
+    applyFilter();
+    counts();
+  }
+
+  function counts(){
+    var map = {news: "#news", fresh: "#fresh"};
+    Object.keys(map).forEach(function(k){
+      var box = document.querySelector(map[k]);
+      var badge = document.querySelector('[data-count="' + k + '"]');
+      if(!box || !badge) return;
+      var left = 0;
+      box.querySelectorAll("[data-id]").forEach(function(el){
+        if(!handled.has(el.getAttribute("data-id"))) left++;
+      });
+      badge.textContent = left;
+    });
+  }
+
+  function applyFilter(){
+    document.querySelectorAll("[data-list]").forEach(function(box){
       var shown = 0;
-      box.querySelectorAll(".row").forEach(function(row){
-        var match = vendor === "all" || row.getAttribute("data-vendor") === vendor;
-        row.classList.toggle("hidden", !match);
-        if(match) shown++;
+      box.querySelectorAll("[data-id]").forEach(function(el){
+        var ok = vendor === "all" || el.getAttribute("data-vendor") === vendor;
+        el.classList.toggle("hidden", !ok);
+        if(ok && !el.classList.contains("is-done")) shown++;
       });
       var stub = box.querySelector("[data-empty]");
       if(stub) stub.classList.toggle("hidden", shown > 0);
     });
   }
 
-  buttons.forEach(function(b){
-    b.addEventListener("click", function(){
-      buttons.forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
-      apply(b.getAttribute("data-v"));
-    });
+  document.addEventListener("click", function(e){
+    var btn = e.target.closest ? e.target.closest(".done") : null;
+    if(btn){
+      var el = btn.closest("[data-id]");
+      var id = el.getAttribute("data-id");
+      // одна и та же запись может стоять и в сводке, и в полном списке
+      if(handled.has(id)) handled.delete(id); else handled.add(id);
+      save(handled);
+      paint();
+      return;
+    }
+
+    var f = e.target.closest ? e.target.closest(".fbtn") : null;
+    if(!f) return;
+
+    if(f.id === "toggle-done"){
+      var on = document.body.classList.toggle("show-done");
+      f.setAttribute("aria-pressed", on ? "true" : "false");
+      f.textContent = on ? "Скрыть обработанные" : "Показать обработанные";
+      applyFilter();
+      return;
+    }
+    if(f.id === "reset-done"){
+      handled = new Set();
+      save(handled);
+      paint();
+      return;
+    }
+    if(f.hasAttribute("data-v")){
+      vendor = f.getAttribute("data-v");
+      document.querySelectorAll('.fbtn[data-v]').forEach(function(x){
+        x.setAttribute("aria-pressed", x === f ? "true" : "false");
+      });
+      applyFilter();
+    }
   });
+
+  paint();
 })();
 </script>
 </body>
