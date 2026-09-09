@@ -1,10 +1,20 @@
 [filters]
-# Порог из твоего же критерия отбора для дашборда.
-# Запись проходит, если CVSS >= min_cvss ЛИБО она в KEV (KEV идёт мимо порога).
+# Порог из твоего критерия отбора. Запись проходит, если CVSS >= min_cvss
+# ЛИБО она в KEV — попадание в KEV идёт мимо порога.
 min_cvss = 8.6
+
+# Окно для запроса в NVD: сколько дней назад смотреть изменённые CVE.
 window_days = 60
 
-# kev_match — подстроки, по которым ищем в полях vendorProject/product каталога KEV.
+# Окно «свежего» на странице. Записи новее этой границы идут в верхнюю
+# секцию, остальные — в свёрнутый полный список. KEV забирается целиком
+# без учёта даты: дыра 2021 года, которую эксплуатируют сегодня, остаётся
+# опасной для парка, который стоит у клиентов годами.
+fresh_days = 60
+
+# kev_match — подстроки, по которым ищем в vendorProject + product каталога KEV.
+# Для крупных вендоров сужено до линеек: иначе Cisco тянет в ленту всю свою
+# историю от WebEx до роутеров нулевых. Правь под свой реальный парк.
 # nvd_keyword — строка для keywordSearch в NVD. Пустая = вендор только из KEV.
 
 [[vendors]]
@@ -39,12 +49,18 @@ nvd_keyword = "hikvision"
 
 [[vendors]]
 name = "Cisco"
-kev_match = ["Cisco"]
+kev_match = [
+    "Adaptive Security Appliance",
+    "Firepower",
+    "Secure Firewall",
+    "IOS XE",
+    "Small Business RV",
+]
 nvd_keyword = "cisco secure firewall"
 
 [[vendors]]
 name = "Fortinet"
-kev_match = ["Fortinet"]
+kev_match = ["FortiOS", "FortiGate", "FortiProxy", "FortiManager"]
 nvd_keyword = "fortinet fortigate"
 
 [[vendors]]
@@ -54,5 +70,5 @@ nvd_keyword = "zyxel"
 
 [[vendors]]
 name = "SonicWall"
-kev_match = ["SonicWall"]
+kev_match = ["SonicWall", "SonicOS"]
 nvd_keyword = "sonicwall"

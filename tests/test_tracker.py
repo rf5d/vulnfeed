@@ -115,3 +115,39 @@ def test_cvss_null_does_not_erase_existing(tmp_path):
 
     assert row["cvss"] == 9.8, "запись из KEV затёрла оценку CVSS"
     assert row["in_kev"] == 1
+
+
+def test_fresh_split_uses_both_dates():
+    from vulnfeed.render import is_fresh
+    cutoff = "2026-07-11"
+    assert is_fresh({"kev_date": "2026-09-02", "published": None}, cutoff)
+    assert is_fresh({"kev_date": None, "published": "2026-08-15T10:00:00.000"}, cutoff)
+    # старая запись в KEV, но переопубликована недавно — считаем свежей
+    assert is_fresh({"kev_date": "2021-11-03", "published": "2026-08-01T00:00:00.000"}, cutoff)
+    assert not is_fresh({"kev_date": "2021-11-03", "published": "2021-10-01T00:00:00.000"}, cutoff)
+    assert not is_fresh({"kev_date": None, "published": None}, cutoff)
+
+
+def test_context_splits_and_counts(tmp_path):
+    from vulnfeed.render import collect_context
+    from datetime import datetime, timedelta, timezone
+
+    today = datetime.now(timezone.utc)
+    recent = (today - timedelta(days=5)).strftime("%Y-%m-%d")
+    ancient = (today - timedelta(days=900)).strftime("%Y-%m-%d")
+
+    path = tmp_path / "t.db"
+    with db.connect(path) as conn:
+        db.upsert_cve(conn, Cve(cve_id="CVE-2026-A", vendor="Dahua",
+                                in_kev=1, kev_date=recent, cvss=9.8))
+        db.upsert_cve(conn, Cve(cve_id="CVE-2021-B", vendor="Dahua",
+                                in_kev=1, kev_date=ancient, cvss=9.8))
+        db.upsert_cve(conn, Cve(cve_id="CVE-2021-C", vendor="Cisco",
+                                in_kev=1, kev_date=ancient, cvss=8.6))
+
+    ctx = collect_context(str(path), fresh_days=60)
+    assert [c["cve_id"] for c in ctx["fresh"]] == ["CVE-2026-A"]
+    assert {c["cve_id"] for c in ctx["rest"]} == {"CVE-2021-B", "CVE-2021-C"}
+    assert ctx["total"] == 3 and ctx["kev_count"] == 3 and ctx["fresh_kev"] == 1
+    # счётчики фильтров считают по всем записям, отсортированы по убыванию
+    assert ctx["vendors"] == [("Dahua", 2), ("Cisco", 1)]

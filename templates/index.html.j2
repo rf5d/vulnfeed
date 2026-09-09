@@ -6,25 +6,28 @@
 <title>Трекер уязвимостей и вендоров</title>
 <style>
   :root{--ground:#F3F4F8;--surface:#fff;--surface-2:#FAFAFC;--ink:#15162A;--muted:#5E6180;
-        --faint:#8B8EA8;--line:#E1E2EC;--accent:#4338A8;--accent-soft:#ECEBF8;
+        --faint:#8B8EA8;--line:#E1E2EC;--line-strong:#CFD1E0;--accent:#4338A8;--accent-soft:#ECEBF8;
         --bad:#AE2A20;--bad-soft:#F9E7E5;--warn:#8F5D12;--warn-soft:#F8EFDC;
-        --ok:#1C7A4C;--ok-soft:#E4F2EA;color-scheme:light}
+        --ok:#1C7A4C;--ok-soft:#E4F2EA;--on-accent:#fff;color-scheme:light}
   @media (prefers-color-scheme:dark){:root{
         --ground:#111220;--surface:#1A1B2A;--surface-2:#1F2030;--ink:#E8E9F3;--muted:#9B9DB6;
-        --faint:#71748F;--line:#2B2D42;--accent:#9C97FA;--accent-soft:#252643;
+        --faint:#71748F;--line:#2B2D42;--line-strong:#3A3C55;--accent:#9C97FA;--accent-soft:#252643;
         --bad:#F3867C;--bad-soft:#331C1A;--warn:#E4A94D;--warn-soft:#332715;
-        --ok:#5BD196;--ok-soft:#16301F;color-scheme:dark}}
+        --ok:#5BD196;--ok-soft:#16301F;--on-accent:#14152A;color-scheme:dark}}
   *{box-sizing:border-box}
   body{margin:0;background:var(--ground);color:var(--ink);font:15px/1.5 -apple-system,
        BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
   .wrap{max-width:1080px;margin:0 auto;padding:28px 20px 64px;
         display:flex;flex-direction:column;gap:30px}
   header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
-         gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+         gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line-strong)}
   h1{margin:0;font-size:26px;letter-spacing:-.02em}
   .stamp{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--faint);text-align:right}
+  section{display:flex;flex-direction:column;gap:12px}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
   h2{margin:0;font-size:11px;font-weight:600;letter-spacing:.14em;
      text-transform:uppercase;color:var(--faint)}
+  .sec-note{font:11.5px ui-monospace,monospace;color:var(--faint)}
   .card{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
   .row{display:grid;grid-template-columns:66px 1fr auto;gap:14px;align-items:start;
        padding:13px 15px;border-top:1px solid var(--line)}
@@ -34,25 +37,38 @@
   .score.crit{background:var(--bad-soft);color:var(--bad)}
   .score small{display:block;font-size:9px;letter-spacing:.08em;opacity:.85}
   .cid{font:600 12px ui-monospace,monospace}
-  .cid a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line)}
+  .cid a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line-strong)}
   .cid a:hover{color:var(--accent);border-bottom-color:var(--accent)}
   .vend{font-size:12px;color:var(--muted);margin-top:2px}
-  .desc{font-size:13px;margin-top:5px;max-width:76ch;color:var(--ink)}
+  .desc{font-size:13px;margin-top:5px;max-width:76ch}
   .chip{display:inline-block;font:600 10.5px ui-monospace,monospace;letter-spacing:.05em;
         padding:3px 8px;border-radius:999px;white-space:nowrap;
-        background:var(--ok-soft);color:var(--ok)}
+        background:var(--ok-soft);color:var(--ok);margin-bottom:3px}
   .chip.bad{background:var(--bad-soft);color:var(--bad)}
+  .filters{display:flex;flex-wrap:wrap;gap:7px}
+  .fbtn{font:500 11.5px ui-monospace,monospace;padding:5px 11px;border-radius:999px;
+        border:1px solid var(--line-strong);background:transparent;color:var(--muted);
+        cursor:pointer;transition:.12s}
+  .fbtn:hover{border-color:var(--accent);color:var(--accent)}
+  .fbtn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+  .fbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  details>summary{cursor:pointer;padding:13px 15px;font-size:13px;color:var(--muted);
+                  list-style:none;user-select:none}
+  details>summary::-webkit-details-marker{display:none}
+  details>summary::before{content:"▸ ";color:var(--faint)}
+  details[open]>summary::before{content:"▾ "}
+  details>summary:hover{color:var(--accent)}
   .ev{display:grid;grid-template-columns:135px 1fr;gap:12px;padding:9px 15px;
       border-top:1px solid var(--line);font-size:12.5px}
   .ev:first-child{border-top:none}
   .ev time{font:11.5px ui-monospace,monospace;color:var(--faint)}
-  .ev b{font-weight:600}
   .note{font-size:12px;color:var(--faint);line-height:1.6;max-width:84ch;margin:0}
   .empty{padding:24px 15px;text-align:center;color:var(--faint);font-size:13px}
   .runs{display:flex;flex-wrap:wrap;gap:6px;padding:12px 15px}
   .run{font:11px ui-monospace,monospace;padding:3px 8px;border-radius:4px;
        background:var(--ok-soft);color:var(--ok)}
   .run.fail{background:var(--bad-soft);color:var(--bad)}
+  .hidden{display:none!important}
 </style>
 </head>
 <body>
@@ -66,11 +82,21 @@
     <div class="stamp">собрано<br><b>{{ generated }}</b></div>
   </header>
 
-  <section style="display:flex;flex-direction:column;gap:12px">
-    <h2>Уязвимости · {{ cves|length }} записей, {{ kev_count }} в KEV</h2>
-    <div class="card">
-      {% for c in cves %}
-      <div class="row">
+  <div class="filters" id="f-vendor" role="group" aria-label="Фильтр по вендору">
+    <button class="fbtn" data-v="all" aria-pressed="true">Все вендоры {{ total }}</button>
+    {% for name, n in vendors %}
+    <button class="fbtn" data-v="{{ name }}" aria-pressed="false">{{ name }} {{ n }}</button>
+    {% endfor %}
+  </div>
+
+  <section>
+    <div class="sec-head">
+      <h2>Свежее · за {{ fresh_days }} дней</h2>
+      <span class="sec-note">{{ fresh|length }} записей · {{ fresh_kev }} в KEV · с {{ cutoff }}</span>
+    </div>
+    <div class="card" id="fresh-list">
+      {% for c in fresh %}
+      <div class="row" data-vendor="{{ c.vendor }}">
         <div class="score {% if c.cvss and c.cvss >= 9.0 %}crit{% endif %}">
           {{ '%.1f'|format(c.cvss) if c.cvss else '—' }}<small>CVSS{{ ' ' ~ c.cvss_version if c.cvss_version }}</small>
         </div>
@@ -80,18 +106,57 @@
           {% if c.description %}<div class="desc">{{ c.description }}</div>{% endif %}
         </div>
         <div>
-          {% if c.in_kev %}<span class="chip bad">KEV{% if c.kev_date %} · {{ c.kev_date }}{% endif %}</span>{% endif %}
+          {% if c.in_kev %}<span class="chip bad">KEV{% if c.kev_date %} · {{ c.kev_date }}{% endif %}</span><br>{% endif %}
           {% if c.ransomware %}<span class="chip bad">ШИФРОВАЛЬЩИКИ</span>{% endif %}
         </div>
       </div>
       {% else %}
-      <div class="empty">Пусто. Либо прогон ещё не был, либо ни одна запись не прошла порог.</div>
+      <div class="empty">За окно ничего нового. Это нормальный результат, а не сбой.</div>
       {% endfor %}
+      <div class="empty hidden" data-empty>По этому вендору за окно записей нет</div>
     </div>
   </section>
 
-  <section style="display:flex;flex-direction:column;gap:12px">
-    <h2>Что изменилось</h2>
+  <section>
+    <div class="sec-head">
+      <h2>Весь парк · активные угрозы вне окна</h2>
+      <span class="sec-note">{{ rest|length }} записей</span>
+    </div>
+    <div class="card">
+      <details>
+        <summary>Показать полный список по нашим вендорам ({{ rest|length }})</summary>
+        <div id="rest-list">
+          {% for c in rest %}
+          <div class="row" data-vendor="{{ c.vendor }}">
+            <div class="score {% if c.cvss and c.cvss >= 9.0 %}crit{% endif %}">
+              {{ '%.1f'|format(c.cvss) if c.cvss else '—' }}<small>CVSS{{ ' ' ~ c.cvss_version if c.cvss_version }}</small>
+            </div>
+            <div>
+              <div class="cid"><a href="{{ c.url }}" target="_blank" rel="noopener">{{ c.cve_id }}</a></div>
+              <div class="vend">{{ c.vendor }}{% if c.product %} · {{ c.product }}{% endif %}</div>
+              {% if c.description %}<div class="desc">{{ c.description }}</div>{% endif %}
+            </div>
+            <div>
+              {% if c.in_kev %}<span class="chip bad">KEV{% if c.kev_date %} · {{ c.kev_date }}{% endif %}</span><br>{% endif %}
+              {% if c.ransomware %}<span class="chip bad">ШИФРОВАЛЬЩИКИ</span>{% endif %}
+            </div>
+          </div>
+          {% else %}
+          <div class="empty">Пусто</div>
+          {% endfor %}
+          <div class="empty hidden" data-empty>По этому вендору записей нет</div>
+        </div>
+      </details>
+    </div>
+    <p class="note">
+      Здесь то, что вышло за окно новостей, но осталось в KEV — то есть эксплуатируется прямо сейчас.
+      Для парка, который стоит у клиентов годами, этот список важнее верхнего: дыра 2021 года в камере
+      не становится безопасной оттого, что она не новость.
+    </p>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Что изменилось</h2></div>
     <div class="card">
       {% for e in events %}
       <div class="ev">
@@ -104,8 +169,8 @@
     </div>
   </section>
 
-  <section style="display:flex;flex-direction:column;gap:12px">
-    <h2>Вендоры · EOL, EOS и анонсы</h2>
+  <section>
+    <div class="sec-head"><h2>Вендоры · EOL, EOS и анонсы</h2></div>
     <div class="card">
       {% for i in items %}
       <div class="ev">
@@ -119,16 +184,45 @@
     </div>
   </section>
 
-  <section style="display:flex;flex-direction:column;gap:12px">
-    <h2>Последние прогоны</h2>
+  <section>
+    <div class="sec-head"><h2>Последние прогоны</h2></div>
     <div class="card"><div class="runs">
       {% for r in runs %}
       <span class="run {% if not r.ok %}fail{% endif %}" title="{{ r.error or '' }}">{{ r.at[5:16]|replace('T',' ') }} {{ r.source }} {{ r.items }}</span>
       {% endfor %}
     </div></div>
-    <p class="note">Красным — источник, который упал. Прогон при этом не прерывается: часть данных лучше, чем ничего, но и подставлять старые вместо новых нельзя.</p>
+    <p class="note">Красным — источник, который упал. Прогон при этом не прерывается: часть данных лучше, чем ничего, но подставлять старые вместо новых нельзя.</p>
   </section>
 
 </div>
+
+<script>
+(function(){
+  "use strict";
+  var buttons = document.querySelectorAll("#f-vendor .fbtn");
+
+  function apply(vendor){
+    ["fresh-list", "rest-list"].forEach(function(id){
+      var box = document.getElementById(id);
+      if(!box) return;
+      var shown = 0;
+      box.querySelectorAll(".row").forEach(function(row){
+        var match = vendor === "all" || row.getAttribute("data-vendor") === vendor;
+        row.classList.toggle("hidden", !match);
+        if(match) shown++;
+      });
+      var stub = box.querySelector("[data-empty]");
+      if(stub) stub.classList.toggle("hidden", shown > 0);
+    });
+  }
+
+  buttons.forEach(function(b){
+    b.addEventListener("click", function(){
+      buttons.forEach(function(x){ x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      apply(b.getAttribute("data-v"));
+    });
+  });
+})();
+</script>
 </body>
 </html>
