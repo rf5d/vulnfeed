@@ -1,0 +1,58 @@
+[filters]
+# Порог из твоего же критерия отбора для дашборда.
+# Запись проходит, если CVSS >= min_cvss ЛИБО она в KEV (KEV идёт мимо порога).
+min_cvss = 8.6
+window_days = 60
+
+# kev_match — подстроки, по которым ищем в полях vendorProject/product каталога KEV.
+# nvd_keyword — строка для keywordSearch в NVD. Пустая = вендор только из KEV.
+
+[[vendors]]
+name = "RUCKUS"
+kev_match = ["Ruckus", "CommScope", "Brocade"]
+nvd_keyword = "ruckus wireless"
+
+[[vendors]]
+name = "TP-Link Omada"
+kev_match = ["TP-Link", "Omada"]
+nvd_keyword = "tp-link omada"
+
+[[vendors]]
+name = "Ubiquiti"
+kev_match = ["Ubiquiti", "UniFi"]
+nvd_keyword = "ubiquiti unifi"
+
+[[vendors]]
+name = "MikroTik"
+kev_match = ["MikroTik"]
+nvd_keyword = "mikrotik routeros"
+
+[[vendors]]
+name = "Dahua"
+kev_match = ["Dahua"]
+nvd_keyword = "dahua"
+
+[[vendors]]
+name = "Hikvision"
+kev_match = ["Hikvision"]
+nvd_keyword = "hikvision"
+
+[[vendors]]
+name = "Cisco"
+kev_match = ["Cisco"]
+nvd_keyword = "cisco secure firewall"
+
+[[vendors]]
+name = "Fortinet"
+kev_match = ["Fortinet"]
+nvd_keyword = "fortinet fortigate"
+
+[[vendors]]
+name = "Zyxel"
+kev_match = ["Zyxel"]
+nvd_keyword = "zyxel"
+
+[[vendors]]
+name = "SonicWall"
+kev_match = ["SonicWall"]
+nvd_keyword = "sonicwall"

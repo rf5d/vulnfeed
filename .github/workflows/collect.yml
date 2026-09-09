@@ -1,0 +1,54 @@
+name: collect
+
+on:
+  schedule:
+    # 06:00 UTC = 11:00 Алматы. Actions держит очередь: реальный запуск
+    # плавает на 10–20 минут позже. Для суточного трекера это неважно.
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+# Прогоны не должны накладываться: база — файл в репозитории.
+concurrency:
+  group: collect
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Установить зависимости
+        run: uv sync --all-extras
+
+      - name: Тесты
+        run: uv run pytest -q
+
+      - name: Собрать данные
+        env:
+          # Заведи ключ в Settings → Secrets and variables → Actions.
+          # Без него NVD режет до ~5 запросов на 30 секунд.
+          NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
+        run: uv run vulnfeed-collect --config config.toml --db data/tracker.db
+
+      - name: Собрать страницу
+        run: uv run vulnfeed-render --db data/tracker.db --out docs/index.html
+
+      - name: Закоммитить, если что-то изменилось
+        run: |
+          git config user.name "vulnfeed-bot"
+          git config user.email "actions@github.com"
+          git add data/tracker.db docs/index.html
+          if git diff --staged --quiet; then
+            echo "изменений нет — коммита не будет"
+          else
+            git commit -m "срез $(date -u +%Y-%m-%d)"
+            git push
+          fi
