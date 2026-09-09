@@ -63,7 +63,7 @@
       <h1>Трекер уязвимостей и вендоров</h1>
       <p class="note" style="margin-top:5px">Источники: CISA KEV и NVD. Сборка автоматическая, правки руками затираются следующим прогоном.</p>
     </div>
-    <div class="stamp">собрано<br><b>09.09.2026 14:21 UTC</b></div>
+    <div class="stamp">собрано<br><b>09.09.2026 14:40 UTC</b></div>
   </header>
 
   <section style="display:flex;flex-direction:column;gap:12px">
@@ -2173,6 +2173,160 @@ This vulnerability is due to insufficient error checking when processing HTTP re
     <h2>Что изменилось</h2>
     <div class="card">
       <div class="ev">
+        <time>2026-09-09 14:40</time>
+        <div><b>CVE-2017-6884</b> (Zyxel) — in_kev: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:40</time>
+        <div><b>CVE-2017-6884</b> (Zyxel) — ransomware: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:40</time>
+        <div><b>CVE-2017-6884</b> (Zyxel) — description: Zyxel EMG2926 routers contain a command injection vulnerability located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute malicious commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI. → <b>A command injection vulnerability was discovered on the Zyxel EMG2926 home router with firmware V1.00(AAQT.4)b8. The vulnerability is located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute arbitrary commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:40</time>
+        <div><b>CVE-2021-20016</b> (SonicWall) — in_kev: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:40</time>
+        <div><b>CVE-2021-20016</b> (SonicWall) — ransomware: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:40</time>
+        <div><b>CVE-2021-20016</b> (SonicWall) — description: SonicWall SSLVPN SMA100 contains a SQL injection vulnerability that allows remote exploitation for credential access by an unauthenticated attacker. → <b>A SQL-Injection vulnerability in the SonicWall SSLVPN SMA100 product allows a remote unauthenticated attacker to perform SQL query to access username password and other session related information. This vulnerability impacts SMA100 build version 10.x.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:40</time>
+        <div><b>CVE-2021-20021</b> (SonicWall) — in_kev: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:40</time>
+        <div><b>CVE-2021-20021</b> (SonicWall) — ransomware: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:40</time>
+        <div><b>CVE-2021-20021</b> (SonicWall) — description: SonicWall Email Security contains an improper privilege management vulnerability that allows an attacker to create an administrative account by sending a crafted HTTP request to the remote host. This vulnerability has known usage in a SonicWall Email Security exploit chain along with CVE-2021-20022 and CVE-2021-20023 to achieve privilege escalation. → <b>A vulnerability in the SonicWall Email Security version 10.0.9.x allows an attacker to create an administrative account by sending a crafted HTTP request to the remote host.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:40</time>
+        <div><b>CVE-2024-11667</b> (Zyxel) — in_kev: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:40</time>
+        <div><b>CVE-2024-11667</b> (Zyxel) — ransomware: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:40</time>
+        <div><b>CVE-2024-11667</b> (Zyxel) — description: Multiple Zyxel firewalls contain a path traversal vulnerability in the web management interface that could allow an attacker to download or upload files via a crafted URL. → <b>A directory traversal vulnerability in the web management interface of Zyxel ATP series firmware versions V5.00 through V5.38, USG FLEX series firmware versions V5.00 through V5.38, USG FLEX 50(W) series firmware versions V5.10 through V5.38, and USG20(W)-VPN series firmware versions V5.10 through V5.38 could allow an attacker to download or upload files via a crafted URL.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:40</time>
+        <div><b>CVE-2025-20333</b> (Cisco) — in_kev: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:40</time>
+        <div><b>CVE-2025-20333</b> (Cisco) — description: Cisco Secure Firewall Adaptive Security (ASA) Appliance and Secure Firewall Threat Defense (FTD) Software VPN Web Server contain a buffer overflow vulnerability that allows for remote code execution. This vulnerability could be chained with CVE-2025-20362. → <b>A vulnerability in the VPN web server of Cisco Secure Firewall Adaptive Security Appliance (ASA) Software and Cisco Secure Firewall Threat Defense (FTD) Software could allow an authenticated, remote attacker to execute arbitrary code on an affected device.
+ This vulnerability is due to improper validation of user-supplied input in HTTP(S) requests. An attacker with valid VPN user credentials could exploit this vulnerability by sending crafted HTTP requests to an affected device. A successful exploit could allow the attacker to execute arbitrary code as root, possibly resulting in the complete compromise of the affected device.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:40</time>
+        <div><b>CVE-2025-20362</b> (Cisco) — in_kev: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:40</time>
+        <div><b>CVE-2025-20362</b> (Cisco) — description: Cisco Secure Firewall Adaptive Security (ASA) Appliance and Secure Firewall Threat Defense (FTD) Software VPN Web Server contain a missing authorization vulnerability. This vulnerability could be chained with CVE-2025-20333. → <b>Update: On November 5, 2025, Cisco became aware of a new attack variant against devices running Cisco Secure ASA Software or Cisco Secure FTD Software releases that are affected by CVE-2025-20333 and CVE-2025-20362. This attack can cause unpatched devices to unexpectedly reload, leading to denial of service (DoS) conditions. Cisco strongly recommends that all customers upgrade to the fixed software releases that are listed in the Fixed Software ["#fs"] section of this advisory.
+ A vulnerability in the VPN web server of Cisco Secure Firewall Adaptive Security Appliance (ASA) Software and Cisco Secure Firewall Threat Defense (FTD) Software could allow an unauthenticated, remote attacker to access restricted URL endpoints that are related to remote access VPN that should otherwise be inaccessible without authentication.
+ This vulnerability is due to improper validation of user-supplied input in HTTP(S) requests. An attacker could exploit this vulnerability by sending crafted HTTP requests to a targeted web server on a device. A successful exploit could allow the attacker to access a restricted URL without authentication.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:40</time>
+        <div><b>CVE-2026-20349</b> (Cisco) — in_kev: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:40</time>
+        <div><b>CVE-2026-20349</b> (Cisco) — description: Cisco Secure Firewall Adaptive Security Appliance (ASA) and Secure Firewall Threat Defense (FTD) contain a heap inspection vulnerability that could allow an unauthenticated, remote attacker to cause the device to reload unexpectedly, resulting in a denial of service (DoS) condition. → <b>A vulnerability in the Remote Access SSL VPN service for Cisco Secure Firewall Adaptive Security Appliance (ASA) Software and Cisco Secure Firewall Threat Defense (FTD) Software could allow an unauthenticated, remote attacker to cause the device to reload unexpectedly, resulting in a denial of service (DoS) condition.&nbsp;
+
+This vulnerability is due to insufficient error checking when processing HTTP requests. An attacker could exploit this vulnerability by sending a crafted HTTP request to the Remote Access SSL VPN service on an affected device. A successful exploit could allow the attacker to cause the affected device to reload, resulting in a DoS condition.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:39</time>
+        <div><b>CVE-2017-6884</b> (Zyxel) — in_kev: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:39</time>
+        <div><b>CVE-2017-6884</b> (Zyxel) — ransomware: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:39</time>
+        <div><b>CVE-2017-6884</b> (Zyxel) — description: A command injection vulnerability was discovered on the Zyxel EMG2926 home router with firmware V1.00(AAQT.4)b8. The vulnerability is located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute arbitrary commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI. → <b>Zyxel EMG2926 routers contain a command injection vulnerability located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute malicious commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:39</time>
+        <div><b>CVE-2021-20016</b> (SonicWall) — in_kev: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:39</time>
+        <div><b>CVE-2021-20016</b> (SonicWall) — ransomware: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:39</time>
+        <div><b>CVE-2021-20016</b> (SonicWall) — description: A SQL-Injection vulnerability in the SonicWall SSLVPN SMA100 product allows a remote unauthenticated attacker to perform SQL query to access username password and other session related information. This vulnerability impacts SMA100 build version 10.x. → <b>SonicWall SSLVPN SMA100 contains a SQL injection vulnerability that allows remote exploitation for credential access by an unauthenticated attacker.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:39</time>
+        <div><b>CVE-2021-20021</b> (SonicWall) — in_kev: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:39</time>
+        <div><b>CVE-2021-20021</b> (SonicWall) — ransomware: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:39</time>
+        <div><b>CVE-2021-20021</b> (SonicWall) — description: A vulnerability in the SonicWall Email Security version 10.0.9.x allows an attacker to create an administrative account by sending a crafted HTTP request to the remote host. → <b>SonicWall Email Security contains an improper privilege management vulnerability that allows an attacker to create an administrative account by sending a crafted HTTP request to the remote host. This vulnerability has known usage in a SonicWall Email Security exploit chain along with CVE-2021-20022 and CVE-2021-20023 to achieve privilege escalation.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:39</time>
+        <div><b>CVE-2024-11667</b> (Zyxel) — in_kev: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:39</time>
+        <div><b>CVE-2024-11667</b> (Zyxel) — ransomware: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:39</time>
+        <div><b>CVE-2024-11667</b> (Zyxel) — description: A directory traversal vulnerability in the web management interface of Zyxel ATP series firmware versions V5.00 through V5.38, USG FLEX series firmware versions V5.00 through V5.38, USG FLEX 50(W) series firmware versions V5.10 through V5.38, and USG20(W)-VPN series firmware versions V5.10 through V5.38 could allow an attacker to download or upload files via a crafted URL. → <b>Multiple Zyxel firewalls contain a path traversal vulnerability in the web management interface that could allow an attacker to download or upload files via a crafted URL.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:39</time>
+        <div><b>CVE-2025-20333</b> (Cisco) — in_kev: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:39</time>
+        <div><b>CVE-2025-20333</b> (Cisco) — description: A vulnerability in the VPN web server of Cisco Secure Firewall Adaptive Security Appliance (ASA) Software and Cisco Secure Firewall Threat Defense (FTD) Software could allow an authenticated, remote attacker to execute arbitrary code on an affected device.
+ This vulnerability is due to improper validation of user-supplied input in HTTP(S) requests. An attacker with valid VPN user credentials could exploit this vulnerability by sending crafted HTTP requests to an affected device. A successful exploit could allow the attacker to execute arbitrary code as root, possibly resulting in the complete compromise of the affected device. → <b>Cisco Secure Firewall Adaptive Security (ASA) Appliance and Secure Firewall Threat Defense (FTD) Software VPN Web Server contain a buffer overflow vulnerability that allows for remote code execution. This vulnerability could be chained with CVE-2025-20362.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:39</time>
+        <div><b>CVE-2025-20362</b> (Cisco) — in_kev: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:39</time>
+        <div><b>CVE-2025-20362</b> (Cisco) — description: Update: On November 5, 2025, Cisco became aware of a new attack variant against devices running Cisco Secure ASA Software or Cisco Secure FTD Software releases that are affected by CVE-2025-20333 and CVE-2025-20362. This attack can cause unpatched devices to unexpectedly reload, leading to denial of service (DoS) conditions. Cisco strongly recommends that all customers upgrade to the fixed software releases that are listed in the Fixed Software ["#fs"] section of this advisory.
+ A vulnerability in the VPN web server of Cisco Secure Firewall Adaptive Security Appliance (ASA) Software and Cisco Secure Firewall Threat Defense (FTD) Software could allow an unauthenticated, remote attacker to access restricted URL endpoints that are related to remote access VPN that should otherwise be inaccessible without authentication.
+ This vulnerability is due to improper validation of user-supplied input in HTTP(S) requests. An attacker could exploit this vulnerability by sending crafted HTTP requests to a targeted web server on a device. A successful exploit could allow the attacker to access a restricted URL without authentication. → <b>Cisco Secure Firewall Adaptive Security (ASA) Appliance and Secure Firewall Threat Defense (FTD) Software VPN Web Server contain a missing authorization vulnerability. This vulnerability could be chained with CVE-2025-20333.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:39</time>
+        <div><b>CVE-2026-20349</b> (Cisco) — in_kev: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-09 14:39</time>
+        <div><b>CVE-2026-20349</b> (Cisco) — description: A vulnerability in the Remote Access SSL VPN service for Cisco Secure Firewall Adaptive Security Appliance (ASA) Software and Cisco Secure Firewall Threat Defense (FTD) Software could allow an unauthenticated, remote attacker to cause the device to reload unexpectedly, resulting in a denial of service (DoS) condition.&nbsp;
+
+This vulnerability is due to insufficient error checking when processing HTTP requests. An attacker could exploit this vulnerability by sending a crafted HTTP request to the Remote Access SSL VPN service on an affected device. A successful exploit could allow the attacker to cause the affected device to reload, resulting in a DoS condition. → <b>Cisco Secure Firewall Adaptive Security Appliance (ASA) and Secure Firewall Threat Defense (FTD) contain a heap inspection vulnerability that could allow an unauthenticated, remote attacker to cause the device to reload unexpectedly, resulting in a denial of service (DoS) condition.</b></div>
+      </div>
+      <div class="ev">
         <time>2026-09-09 14:21</time>
         <div><b>CVE-2017-6884</b> (Zyxel) — cvss: None → <b>8.8</b></div>
       </div>
@@ -2188,123 +2342,6 @@ This vulnerability is due to insufficient error checking when processing HTTP re
         <time>2026-09-09 14:21</time>
         <div><b>CVE-2017-6884</b> (Zyxel) — description: Zyxel EMG2926 routers contain a command injection vulnerability located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute malicious commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI. → <b>A command injection vulnerability was discovered on the Zyxel EMG2926 home router with firmware V1.00(AAQT.4)b8. The vulnerability is located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute arbitrary commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI.</b></div>
       </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2017-6884</b> (Zyxel) — last_modified: None → <b>2026-08-04T05:16:26.610</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2021-20016</b> (SonicWall) — cvss: None → <b>9.8</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2021-20016</b> (SonicWall) — in_kev: 1 → <b>0</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2021-20016</b> (SonicWall) — ransomware: 1 → <b>0</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2021-20016</b> (SonicWall) — description: SonicWall SSLVPN SMA100 contains a SQL injection vulnerability that allows remote exploitation for credential access by an unauthenticated attacker. → <b>A SQL-Injection vulnerability in the SonicWall SSLVPN SMA100 product allows a remote unauthenticated attacker to perform SQL query to access username password and other session related information. This vulnerability impacts SMA100 build version 10.x.</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2021-20016</b> (SonicWall) — last_modified: None → <b>2026-08-12T05:17:33.173</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2021-20021</b> (SonicWall) — cvss: None → <b>9.8</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2021-20021</b> (SonicWall) — in_kev: 1 → <b>0</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2021-20021</b> (SonicWall) — ransomware: 1 → <b>0</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2021-20021</b> (SonicWall) — description: SonicWall Email Security contains an improper privilege management vulnerability that allows an attacker to create an administrative account by sending a crafted HTTP request to the remote host. This vulnerability has known usage in a SonicWall Email Security exploit chain along with CVE-2021-20022 and CVE-2021-20023 to achieve privilege escalation. → <b>A vulnerability in the SonicWall Email Security version 10.0.9.x allows an attacker to create an administrative account by sending a crafted HTTP request to the remote host.</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2021-20021</b> (SonicWall) — last_modified: None → <b>2026-08-12T05:17:33.710</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2024-11667</b> (Zyxel) — cvss: None → <b>9.8</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2024-11667</b> (Zyxel) — in_kev: 1 → <b>0</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2024-11667</b> (Zyxel) — ransomware: 1 → <b>0</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2024-11667</b> (Zyxel) — description: Multiple Zyxel firewalls contain a path traversal vulnerability in the web management interface that could allow an attacker to download or upload files via a crafted URL. → <b>A directory traversal vulnerability in the web management interface of Zyxel ATP series firmware versions V5.00 through V5.38, USG FLEX series firmware versions V5.00 through V5.38, USG FLEX 50(W) series firmware versions V5.10 through V5.38, and USG20(W)-VPN series firmware versions V5.10 through V5.38 could allow an attacker to download or upload files via a crafted URL.</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2024-11667</b> (Zyxel) — last_modified: None → <b>2026-08-05T05:16:40.797</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2025-20333</b> (Cisco) — cvss: None → <b>9.9</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2025-20333</b> (Cisco) — in_kev: 1 → <b>0</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2025-20333</b> (Cisco) — description: Cisco Secure Firewall Adaptive Security (ASA) Appliance and Secure Firewall Threat Defense (FTD) Software VPN Web Server contain a buffer overflow vulnerability that allows for remote code execution. This vulnerability could be chained with CVE-2025-20362. → <b>A vulnerability in the VPN web server of Cisco Secure Firewall Adaptive Security Appliance (ASA) Software and Cisco Secure Firewall Threat Defense (FTD) Software could allow an authenticated, remote attacker to execute arbitrary code on an affected device.
- This vulnerability is due to improper validation of user-supplied input in HTTP(S) requests. An attacker with valid VPN user credentials could exploit this vulnerability by sending crafted HTTP requests to an affected device. A successful exploit could allow the attacker to execute arbitrary code as root, possibly resulting in the complete compromise of the affected device.</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2025-20333</b> (Cisco) — last_modified: None → <b>2026-08-11T19:33:44.513</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2025-20362</b> (Cisco) — cvss: None → <b>8.6</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2025-20362</b> (Cisco) — in_kev: 1 → <b>0</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2025-20362</b> (Cisco) — description: Cisco Secure Firewall Adaptive Security (ASA) Appliance and Secure Firewall Threat Defense (FTD) Software VPN Web Server contain a missing authorization vulnerability. This vulnerability could be chained with CVE-2025-20333. → <b>Update: On November 5, 2025, Cisco became aware of a new attack variant against devices running Cisco Secure ASA Software or Cisco Secure FTD Software releases that are affected by CVE-2025-20333 and CVE-2025-20362. This attack can cause unpatched devices to unexpectedly reload, leading to denial of service (DoS) conditions. Cisco strongly recommends that all customers upgrade to the fixed software releases that are listed in the Fixed Software ["#fs"] section of this advisory.
- A vulnerability in the VPN web server of Cisco Secure Firewall Adaptive Security Appliance (ASA) Software and Cisco Secure Firewall Threat Defense (FTD) Software could allow an unauthenticated, remote attacker to access restricted URL endpoints that are related to remote access VPN that should otherwise be inaccessible without authentication.
- This vulnerability is due to improper validation of user-supplied input in HTTP(S) requests. An attacker could exploit this vulnerability by sending crafted HTTP requests to a targeted web server on a device. A successful exploit could allow the attacker to access a restricted URL without authentication.</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2025-20362</b> (Cisco) — last_modified: None → <b>2026-08-11T19:33:44.513</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2026-20349</b> (Cisco) — cvss: None → <b>8.6</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2026-20349</b> (Cisco) — in_kev: 1 → <b>0</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2026-20349</b> (Cisco) — description: Cisco Secure Firewall Adaptive Security Appliance (ASA) and Secure Firewall Threat Defense (FTD) contain a heap inspection vulnerability that could allow an unauthenticated, remote attacker to cause the device to reload unexpectedly, resulting in a denial of service (DoS) condition. → <b>A vulnerability in the Remote Access SSL VPN service for Cisco Secure Firewall Adaptive Security Appliance (ASA) Software and Cisco Secure Firewall Threat Defense (FTD) Software could allow an unauthenticated, remote attacker to cause the device to reload unexpectedly, resulting in a denial of service (DoS) condition.&nbsp;
-
-This vulnerability is due to insufficient error checking when processing HTTP requests. An attacker could exploit this vulnerability by sending a crafted HTTP request to the Remote Access SSL VPN service on an affected device. A successful exploit could allow the attacker to cause the affected device to reload, resulting in a DoS condition.</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-09 14:21</time>
-        <div><b>CVE-2026-20349</b> (Cisco) — last_modified: None → <b>2026-08-12T15:02:21.707</b></div>
-      </div>
     </div>
   </section>
 
@@ -2318,8 +2355,10 @@ This vulnerability is due to insufficient error checking when processing HTTP re
   <section style="display:flex;flex-direction:column;gap:12px">
     <h2>Последние прогоны</h2>
     <div class="card"><div class="runs">
-      <span class="run " title="">09-09 14:21 nvd <built-in method items of dict object at 0x7fa7d2706a40></span>
-      <span class="run " title="">09-09 14:19 kev <built-in method items of dict object at 0x7fa7d2706a00></span>
+      <span class="run " title="">09-09 14:40 nvd <built-in method items of dict object at 0x7f6de7b4b140></span>
+      <span class="run " title="">09-09 14:39 kev <built-in method items of dict object at 0x7f6de7b4b100></span>
+      <span class="run " title="">09-09 14:21 nvd <built-in method items of dict object at 0x7f6de7b4b0c0></span>
+      <span class="run " title="">09-09 14:19 kev <built-in method items of dict object at 0x7f6de7b4adc0></span>
     </div></div>
     <p class="note">Красным — источник, который упал. Прогон при этом не прерывается: часть данных лучше, чем ничего, но и подставлять старые вместо новых нельзя.</p>
   </section>
