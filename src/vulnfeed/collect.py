@@ -87,9 +87,12 @@ def run(config_path: str, db_path: str, kev_fixture: str | None = None,
 
         # --- автоматические вендорские источники ---
         if not skip_vendors:
+            # источникам полезно знать, что уже собрано: Ubiquiti по этому
+            # списку не перезапрашивает статьи, которые уже в базе
+            known = {r["url"] for r in conn.execute("SELECT url FROM vendor_item")}
             for label, fn in vendor_sources.SOURCES.items():
                 try:
-                    items = fn()
+                    items = fn(known)
                     _store_items(conn, items, stats, f"vendor:{label}")
                     if not items:
                         print(f"  ! {label}: ноль записей — вероятно, изменилась вёрстка",

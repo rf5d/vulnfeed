@@ -200,26 +200,49 @@ def test_curated_rejects_unknown_kind(tmp_path):
         curated.load(bad)
 
 
-def test_mikrotik_parser_picks_versions_and_dates():
+def test_mikrotik_rss_parsed_and_archive_dropped():
     from vulnfeed.sources import vendors as vs
-    html = (FIX / "mikrotik_changelogs.html").read_text(encoding="utf-8")
-    items = vs.mikrotik_routeros(html)
+    xml = (FIX / "mikrotik_releases.rss").read_text(encoding="utf-8")
+    items = vs.mikrotik_routeros(xml)
     titles = [i.title for i in items]
-    assert any("7.23.5" in t for t in titles)
-    assert any("6.49.21" in t for t in titles)
-    first = next(i for i in items if "7.23.5" in i.title)
-    assert first.date == "2026-09-04"
-    assert first.vendor == "MikroTik" and first.kind == "fw"
-    assert len({i.title for i in items}) == len(items), "парсер задвоил версии"
-
-
-def test_ubiquiti_parser_reads_posts():
-    from vulnfeed.sources import vendors as vs
-    html = (FIX / "ui_blog.html").read_text(encoding="utf-8")
-    items = vs.ubiquiti_blog(html)
-    assert len(items) == 3, "нестатейная ссылка попала в ленту"
+    assert "RouterOS 7.23.5 [long-term]" in titles
+    assert "RouterOS 7.24.2 [stable, testing]" in titles
+    assert not any("6.30.1" in t for t in titles), "древний релиз просочился в ленту"
     top = items[0]
-    assert "Next-Gen Enterprise" in top.title
-    assert top.date == "2026-09-03"
-    assert top.url == "https://blog.ui.com/article/introducing-next-gen-enterprise-networking"
-    assert any(i.kind == "fw" for i in items), "релиз с номером версии не помечен как прошивка"
+    assert top.date == "2026-09-04" and top.vendor == "MikroTik" and top.kind == "fw"
+    assert "IPv6" in (top.body or ""), "описание релиза потерялось"
+    assert top.url.startswith("https://mikrotik.com/")
+
+
+def test_ubiquiti_reads_sitemap_and_article_date():
+    from vulnfeed.sources import vendors as vs
+    sitemap = (FIX / "ui_sitemap.xml").read_text(encoding="utf-8")
+    article = (FIX / "ui_article.html").read_text(encoding="utf-8")
+
+    seen = []
+    def fake_fetch(url):
+        seen.append(url)
+        return article
+
+    items = vs.ubiquiti_blog(known_urls=set(), sitemap_xml=sitemap, fetch=fake_fetch)
+    assert len(items) == 3, "корень блога не должен попадать в ленту как статья"
+    assert all("/article/" in u for u in seen)
+    top = items[0]
+    assert top.title == "Introducing Dream Machine Beast", "заголовок не очищен от суффикса"
+    assert top.date == "2026-04-29"
+    assert top.vendor == "Ubiquiti"
+
+
+def test_ubiquiti_skips_known_urls():
+    """Повторный прогон не должен ходить за уже собранными статьями."""
+    from vulnfeed.sources import vendors as vs
+    sitemap = (FIX / "ui_sitemap.xml").read_text(encoding="utf-8")
+    article = (FIX / "ui_article.html").read_text(encoding="utf-8")
+    known = {"https://blog.ui.com/article/introducing-dream-machine-beast",
+             "https://blog.ui.com/article/introducing-enterprise-7-wifi"}
+
+    fetched = []
+    items = vs.ubiquiti_blog(known_urls=known, sitemap_xml=sitemap,
+                             fetch=lambda u: (fetched.append(u), article)[1])
+    assert len(fetched) == 1, "запрошены статьи, которые уже есть в базе"
+    assert len(items) == 1
