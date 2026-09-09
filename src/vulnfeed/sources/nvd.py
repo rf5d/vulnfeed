@@ -104,11 +104,26 @@ def parse(raw: list[dict], vendor: VendorConfig, min_cvss: float) -> list[Cve]:
 
 
 def collect(vendors: Iterable[VendorConfig], window_days: int, min_cvss: float,
-            api_key: str | None = None) -> list[Cve]:
+            api_key: str | None = None, pause_between: float = 7.0) -> list[Cve]:
+    """Пройти по вендорам с паузой между ними.
+
+    Пауза именно здесь, а не только внутри search(): у большинства вендоров
+    результат укладывается в одну страницу, внутристраничная задержка тогда
+    не срабатывает вообще, и десять вендоров подряд улетают в NVD одной
+    очередью — это ровно тот случай, за который он отдаёт 403.
+    """
+    api_key = api_key or os.environ.get("NVD_API_KEY")
+    if api_key:
+        pause_between = 1.0
+
     found: list[Cve] = []
+    first = True
     for v in vendors:
         if not v.nvd_keyword:
             continue
+        if not first:
+            time.sleep(pause_between)
+        first = False
         raw = search(v.nvd_keyword, window_days, api_key=api_key)
         found.extend(parse(raw, v, min_cvss))
     return found
