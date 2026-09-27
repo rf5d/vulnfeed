@@ -133,14 +133,14 @@
       <h1>Трекер уязвимостей и вендоров</h1>
       <p class="note" style="margin-top:5px">Новости вендоров, EOL и EOS, уязвимости из CISA KEV и NVD. Сборка автоматическая, правки руками затираются следующим прогоном.</p>
     </div>
-    <div class="stamp">собрано<br><b>26.09.2026 10:29 UTC</b></div>
+    <div class="stamp">собрано<br><b>27.09.2026 11:00 UTC</b></div>
   </header>
 
   <nav>
     <a href="#summary">Сводка</a>
     <a href="#news">Новости вендоров<span class="badge" data-count="news">59</span></a>
-    <a href="#fresh">Свежие уязвимости<span class="badge" data-count="fresh">7</span></a>
-    <a href="#park">Весь парк<span class="badge">51</span></a>
+    <a href="#fresh">Свежие уязвимости<span class="badge" data-count="fresh">6</span></a>
+    <a href="#park">Весь парк<span class="badge">53</span></a>
     <a href="#changes">Изменения</a>
     <a href="#runs">Прогоны</a>
   </nav>
@@ -152,7 +152,7 @@
     <button class="fbtn" data-v="MikroTik" aria-pressed="false">MikroTik 7</button>
     <button class="fbtn" data-v="Ubiquiti" aria-pressed="false">Ubiquiti 7</button>
     <button class="fbtn" data-v="TP-Link Omada" aria-pressed="false">TP-Link Omada 6</button>
-    <button class="fbtn" data-v="Dahua" aria-pressed="false">Dahua 4</button>
+    <button class="fbtn" data-v="Dahua" aria-pressed="false">Dahua 5</button>
     <button class="fbtn" data-v="Hikvision" aria-pressed="false">Hikvision 2</button>
     <button class="fbtn" data-v="RUCKUS" aria-pressed="false">RUCKUS 2</button>
     <span class="tools">
@@ -261,8 +261,8 @@
 
       <div style="display:flex;flex-direction:column;gap:10px">
         <div class="sec-head">
-          <h2>Уязвимости · топ 7</h2>
-          <span class="sec-note"><a href="#fresh">все 7 →</a></span>
+          <h2>Уязвимости · топ 6</h2>
+          <span class="sec-note"><a href="#fresh">все 6 →</a></span>
         </div>
         <div class="card" data-list>
 <div class="row" data-vendor="MikroTik" data-id="c:CVE-2026-67279">
@@ -331,18 +331,6 @@
   </div>
   <div>
     <div class="cid"><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-93345" target="_blank" rel="noopener">CVE-2026-93345</a></div>
-    <div class="vend">MikroTik</div>
-  </div>
-  <div>
-  </div>
-  <button class="done" type="button" title="Отметить обработанным" aria-label="Отметить обработанным">✓</button>
-</div>
-<div class="row" data-vendor="MikroTik" data-id="c:CVE-2026-16347">
-  <div class="score ">
-    8.7<small>CVSS</small>
-  </div>
-  <div>
-    <div class="cid"><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-16347" target="_blank" rel="noopener">CVE-2026-16347</a></div>
     <div class="vend">MikroTik</div>
   </div>
   <div>
@@ -847,7 +835,7 @@
   <section id="fresh">
     <div class="sec-head">
       <h2>Свежие уязвимости · за 60 дней</h2>
-      <span class="sec-note">7 записей · 3 в KEV · с 2026-07-28 · <a href="#top">наверх</a></span>
+      <span class="sec-note">6 записей · 3 в KEV · с 2026-07-29 · <a href="#top">наверх</a></span>
     </div>
     <div class="card" data-list>
 <div class="row" data-vendor="MikroTik" data-id="c:CVE-2026-67279">
@@ -924,18 +912,6 @@ This issue affects WAH7601: through 20072026.</div>  </div>
   </div>
   <button class="done" type="button" title="Отметить обработанным" aria-label="Отметить обработанным">✓</button>
 </div>
-<div class="row" data-vendor="MikroTik" data-id="c:CVE-2026-16347">
-  <div class="score ">
-    8.7<small>CVSS</small>
-  </div>
-  <div>
-    <div class="cid"><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-16347" target="_blank" rel="noopener">CVE-2026-16347</a></div>
-    <div class="vend">MikroTik</div>
-<div class="desc">MikroTik RouterOS contains a weakness in its API authentication handling that lacks effective safeguards against excessive login attempts. The system does not enforce meaningful rate-limiting, account lockout, or source-based restrictions, allowing repeated authentication failures to proceed without defensive response. In some versions, a fixed per-connection delay is present, but it can be bypassed through concurrent sessions, resulting in continued high-volume attempts. This deficiency increases the risk that an attacker could eventually obtain valid credentials and gain unauthorized access to administrative services.</div>  </div>
-  <div>
-  </div>
-  <button class="done" type="button" title="Отметить обработанным" aria-label="Отметить обработанным">✓</button>
-</div>
       <div class="empty hidden" data-empty>По этому фильтру записей нет</div>
     </div>
   </section>
@@ -944,11 +920,11 @@ This issue affects WAH7601: through 20072026.</div>  </div>
   <section id="park">
     <div class="sec-head">
       <h2>Весь парк · активные угрозы вне окна</h2>
-      <span class="sec-note">51 записей · <a href="#top">наверх</a></span>
+      <span class="sec-note">53 записей · <a href="#top">наверх</a></span>
     </div>
     <div class="card">
       <details>
-        <summary>Показать полный список (51)</summary>
+        <summary>Показать полный список (53)</summary>
         <div data-list>
 <div class="row" data-vendor="Fortinet" data-id="c:CVE-2025-68686">
   <div class="score ">
@@ -1514,6 +1490,18 @@ This issue affects WAH7601: through 20072026.</div>  </div>
 <span class="chip bad">KEV</span>  </div>
   <button class="done" type="button" title="Отметить обработанным" aria-label="Отметить обработанным">✓</button>
 </div>
+<div class="row" data-vendor="Dahua" data-id="c:CVE-2024-13985">
+  <div class="score crit">
+    10.0<small>CVSS</small>
+  </div>
+  <div>
+    <div class="cid"><a href="https://nvd.nist.gov/vuln/detail/CVE-2024-13985" target="_blank" rel="noopener">CVE-2024-13985</a></div>
+    <div class="vend">Dahua</div>
+<div class="desc">A command injection vulnerability in Dahua EIMS versions prior to 2240008 allows unauthenticated remote attackers to execute arbitrary system commands via the capture_handle.action interface. The flaw stems from improper input validation in the captureCommand parameter, which is processed without sanitization or authentication. By sending crafted HTTP requests, attackers can inject OS-level commands that are executed on the server, leading to full system compromise. Exploitation evidence was first observed by the Shadowserver Foundation on 2024-04-06 UTC.</div>  </div>
+  <div>
+  </div>
+  <button class="done" type="button" title="Отметить обработанным" aria-label="Отметить обработанным">✓</button>
+</div>
 <div class="row" data-vendor="Dahua" data-id="c:CVE-2023-7309">
   <div class="score crit">
     10.0<small>CVSS</small>
@@ -1550,6 +1538,18 @@ This issue affects WAH7601: through 20072026.</div>  </div>
   </div>
   <button class="done" type="button" title="Отметить обработанным" aria-label="Отметить обработанным">✓</button>
 </div>
+<div class="row" data-vendor="MikroTik" data-id="c:CVE-2026-16347">
+  <div class="score ">
+    8.7<small>CVSS</small>
+  </div>
+  <div>
+    <div class="cid"><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-16347" target="_blank" rel="noopener">CVE-2026-16347</a></div>
+    <div class="vend">MikroTik</div>
+<div class="desc">MikroTik RouterOS contains a weakness in its API authentication handling that lacks effective safeguards against excessive login attempts. The system does not enforce meaningful rate-limiting, account lockout, or source-based restrictions, allowing repeated authentication failures to proceed without defensive response. In some versions, a fixed per-connection delay is present, but it can be bypassed through concurrent sessions, resulting in continued high-volume attempts. This deficiency increases the risk that an attacker could eventually obtain valid credentials and gain unauthorized access to administrative services.</div>  </div>
+  <div>
+  </div>
+  <button class="done" type="button" title="Отметить обработанным" aria-label="Отметить обработанным">✓</button>
+</div>
 <div class="row" data-vendor="Dahua" data-id="c:CVE-2026-29116">
   <div class="score ">
     8.7<small>CVSS</small>
@@ -1582,6 +1582,70 @@ resulting in a denial of service.</div>  </div>
       <span class="sec-note"><a href="#top">наверх</a></span>
     </div>
     <div class="card">
+      <div class="ev">
+        <time>2026-09-27 11:00</time>
+        <div><b>CVE-2017-6884</b> (Zyxel) — in_kev: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-27 11:00</time>
+        <div><b>CVE-2017-6884</b> (Zyxel) — ransomware: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-27 11:00</time>
+        <div><b>CVE-2017-6884</b> (Zyxel) — description: Zyxel EMG2926 routers contain a command injection vulnerability located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute malicious commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI. → <b>A command injection vulnerability was discovered on the Zyxel EMG2926 home router with firmware V1.00(AAQT.4)b8. The vulnerability is located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute arbitrary commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-27 11:00</time>
+        <div><b>CVE-2024-11667</b> (Zyxel) — in_kev: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-27 11:00</time>
+        <div><b>CVE-2024-11667</b> (Zyxel) — ransomware: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-27 11:00</time>
+        <div><b>CVE-2024-11667</b> (Zyxel) — description: Multiple Zyxel firewalls contain a path traversal vulnerability in the web management interface that could allow an attacker to download or upload files via a crafted URL. → <b>A directory traversal vulnerability in the web management interface of Zyxel ATP series firmware versions V5.00 through V5.38, USG FLEX series firmware versions V5.00 through V5.38, USG FLEX 50(W) series firmware versions V5.10 through V5.38, and USG20(W)-VPN series firmware versions V5.10 through V5.38 could allow an attacker to download or upload files via a crafted URL.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-27 11:00</time>
+        <div><b>CVE-2026-7273</b> (Zyxel) — in_kev: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-27 11:00</time>
+        <div><b>CVE-2026-7273</b> (Zyxel) — description: Zyxel GS1900 series switches contain a stack-based buffer overflow vulnerability in the CGI program which could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request. → <b>A stack-based buffer overflow vulnerability in the CGI program of Zyxel GS1900-48HPv2 firmware versions through 2.90(ABTQ.1)C0 could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-27 10:59</time>
+        <div><b>CVE-2017-6884</b> (Zyxel) — in_kev: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-27 10:59</time>
+        <div><b>CVE-2017-6884</b> (Zyxel) — ransomware: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-27 10:59</time>
+        <div><b>CVE-2017-6884</b> (Zyxel) — description: A command injection vulnerability was discovered on the Zyxel EMG2926 home router with firmware V1.00(AAQT.4)b8. The vulnerability is located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute arbitrary commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI. → <b>Zyxel EMG2926 routers contain a command injection vulnerability located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute malicious commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-27 10:59</time>
+        <div><b>CVE-2024-11667</b> (Zyxel) — in_kev: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-27 10:59</time>
+        <div><b>CVE-2024-11667</b> (Zyxel) — ransomware: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-27 10:59</time>
+        <div><b>CVE-2024-11667</b> (Zyxel) — description: A directory traversal vulnerability in the web management interface of Zyxel ATP series firmware versions V5.00 through V5.38, USG FLEX series firmware versions V5.00 through V5.38, USG FLEX 50(W) series firmware versions V5.10 through V5.38, and USG20(W)-VPN series firmware versions V5.10 through V5.38 could allow an attacker to download or upload files via a crafted URL. → <b>Multiple Zyxel firewalls contain a path traversal vulnerability in the web management interface that could allow an attacker to download or upload files via a crafted URL.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-27 10:59</time>
+        <div><b>CVE-2026-7273</b> (Zyxel) — in_kev: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-09-27 10:59</time>
+        <div><b>CVE-2026-7273</b> (Zyxel) — description: A stack-based buffer overflow vulnerability in the CGI program of Zyxel GS1900-48HPv2 firmware versions through 2.90(ABTQ.1)C0 could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request. → <b>Zyxel GS1900 series switches contain a stack-based buffer overflow vulnerability in the CGI program which could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request.</b></div>
+      </div>
       <div class="ev">
         <time>2026-09-26 10:29</time>
         <div><b>CVE-2017-6884</b> (Zyxel) — in_kev: 1 → <b>0</b></div>
@@ -1678,70 +1742,6 @@ resulting in a denial of service.</div>  </div>
         <time>2026-09-25 10:46</time>
         <div><b>CVE-2024-11667</b> (Zyxel) — description: Multiple Zyxel firewalls contain a path traversal vulnerability in the web management interface that could allow an attacker to download or upload files via a crafted URL. → <b>A directory traversal vulnerability in the web management interface of Zyxel ATP series firmware versions V5.00 through V5.38, USG FLEX series firmware versions V5.00 through V5.38, USG FLEX 50(W) series firmware versions V5.10 through V5.38, and USG20(W)-VPN series firmware versions V5.10 through V5.38 could allow an attacker to download or upload files via a crafted URL.</b></div>
       </div>
-      <div class="ev">
-        <time>2026-09-25 10:46</time>
-        <div><b>CVE-2026-7273</b> (Zyxel) — in_kev: 1 → <b>0</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-25 10:46</time>
-        <div><b>CVE-2026-7273</b> (Zyxel) — description: Zyxel GS1900 series switches contain a stack-based buffer overflow vulnerability in the CGI program which could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request. → <b>A stack-based buffer overflow vulnerability in the CGI program of Zyxel GS1900-48HPv2 firmware versions through 2.90(ABTQ.1)C0 could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request.</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-25 10:45</time>
-        <div><b>CVE-2017-6884</b> (Zyxel) — in_kev: 0 → <b>1</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-25 10:45</time>
-        <div><b>CVE-2017-6884</b> (Zyxel) — ransomware: 0 → <b>1</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-25 10:45</time>
-        <div><b>CVE-2017-6884</b> (Zyxel) — description: A command injection vulnerability was discovered on the Zyxel EMG2926 home router with firmware V1.00(AAQT.4)b8. The vulnerability is located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute arbitrary commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI. → <b>Zyxel EMG2926 routers contain a command injection vulnerability located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute malicious commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI.</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-25 10:45</time>
-        <div><b>CVE-2024-11667</b> (Zyxel) — in_kev: 0 → <b>1</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-25 10:45</time>
-        <div><b>CVE-2024-11667</b> (Zyxel) — ransomware: 0 → <b>1</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-25 10:45</time>
-        <div><b>CVE-2024-11667</b> (Zyxel) — description: A directory traversal vulnerability in the web management interface of Zyxel ATP series firmware versions V5.00 through V5.38, USG FLEX series firmware versions V5.00 through V5.38, USG FLEX 50(W) series firmware versions V5.10 through V5.38, and USG20(W)-VPN series firmware versions V5.10 through V5.38 could allow an attacker to download or upload files via a crafted URL. → <b>Multiple Zyxel firewalls contain a path traversal vulnerability in the web management interface that could allow an attacker to download or upload files via a crafted URL.</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-25 10:45</time>
-        <div><b>CVE-2026-7273</b> (Zyxel) — in_kev: 0 → <b>1</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-25 10:45</time>
-        <div><b>CVE-2026-7273</b> (Zyxel) — description: A stack-based buffer overflow vulnerability in the CGI program of Zyxel GS1900-48HPv2 firmware versions through 2.90(ABTQ.1)C0 could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request. → <b>Zyxel GS1900 series switches contain a stack-based buffer overflow vulnerability in the CGI program which could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request.</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-24 10:43</time>
-        <div><b>CVE-2017-6884</b> (Zyxel) — in_kev: 1 → <b>0</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-24 10:43</time>
-        <div><b>CVE-2017-6884</b> (Zyxel) — ransomware: 1 → <b>0</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-24 10:43</time>
-        <div><b>CVE-2017-6884</b> (Zyxel) — description: Zyxel EMG2926 routers contain a command injection vulnerability located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute malicious commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI. → <b>A command injection vulnerability was discovered on the Zyxel EMG2926 home router with firmware V1.00(AAQT.4)b8. The vulnerability is located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute arbitrary commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI.</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-24 10:43</time>
-        <div><b>CVE-2024-11667</b> (Zyxel) — in_kev: 1 → <b>0</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-24 10:43</time>
-        <div><b>CVE-2024-11667</b> (Zyxel) — ransomware: 1 → <b>0</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-09-24 10:43</time>
-        <div><b>CVE-2024-11667</b> (Zyxel) — description: Multiple Zyxel firewalls contain a path traversal vulnerability in the web management interface that could allow an attacker to download or upload files via a crafted URL. → <b>A directory traversal vulnerability in the web management interface of Zyxel ATP series firmware versions V5.00 through V5.38, USG FLEX series firmware versions V5.00 through V5.38, USG FLEX 50(W) series firmware versions V5.10 through V5.38, and USG20(W)-VPN series firmware versions V5.10 through V5.38 could allow an attacker to download or upload files via a crafted URL.</b></div>
-      </div>
     </div>
   </section>
 
@@ -1752,20 +1752,20 @@ resulting in a denial of service.</div>  </div>
       <span class="sec-note"><a href="#top">наверх</a></span>
     </div>
     <div class="card"><div class="runs">
-      <span class="run " title="">09-26 10:29 vendor:mikrotik <built-in method items of dict object at 0x7fc0410d9500></span>
-      <span class="run " title="">09-26 10:29 vendor:ubiquiti <built-in method items of dict object at 0x7fc0410d9540></span>
-      <span class="run " title="">09-26 10:29 nvd <built-in method items of dict object at 0x7fc0410d9580></span>
-      <span class="run " title="">09-26 10:29 curated <built-in method items of dict object at 0x7fc0410d95c0></span>
-      <span class="run " title="">09-26 10:29 kev <built-in method items of dict object at 0x7fc0410d9600></span>
-      <span class="run " title="">09-25 10:46 vendor:mikrotik <built-in method items of dict object at 0x7fc0410d9680></span>
-      <span class="run " title="">09-25 10:46 vendor:ubiquiti <built-in method items of dict object at 0x7fc0410d96c0></span>
-      <span class="run " title="">09-25 10:46 nvd <built-in method items of dict object at 0x7fc0410d9700></span>
-      <span class="run " title="">09-25 10:46 curated <built-in method items of dict object at 0x7fc0410d9740></span>
-      <span class="run " title="">09-25 10:45 kev <built-in method items of dict object at 0x7fc0410d9640></span>
-      <span class="run " title="">09-24 10:43 vendor:ubiquiti <built-in method items of dict object at 0x7fc0410d9780></span>
-      <span class="run " title="">09-24 10:43 vendor:mikrotik <built-in method items of dict object at 0x7fc0410d97c0></span>
-      <span class="run " title="">09-24 10:43 nvd <built-in method items of dict object at 0x7fc0410d9800></span>
-      <span class="run " title="">09-24 10:43 curated <built-in method items of dict object at 0x7fc0410d9840></span>
+      <span class="run " title="">09-27 11:00 vendor:mikrotik <built-in method items of dict object at 0x7f2b390d9600></span>
+      <span class="run " title="">09-27 11:00 vendor:ubiquiti <built-in method items of dict object at 0x7f2b390d9640></span>
+      <span class="run " title="">09-27 11:00 nvd <built-in method items of dict object at 0x7f2b390d9680></span>
+      <span class="run " title="">09-27 11:00 curated <built-in method items of dict object at 0x7f2b390d96c0></span>
+      <span class="run " title="">09-27 10:59 kev <built-in method items of dict object at 0x7f2b390d9700></span>
+      <span class="run " title="">09-26 10:29 vendor:mikrotik <built-in method items of dict object at 0x7f2b390d9780></span>
+      <span class="run " title="">09-26 10:29 vendor:ubiquiti <built-in method items of dict object at 0x7f2b390d97c0></span>
+      <span class="run " title="">09-26 10:29 nvd <built-in method items of dict object at 0x7f2b390d9800></span>
+      <span class="run " title="">09-26 10:29 curated <built-in method items of dict object at 0x7f2b390d9840></span>
+      <span class="run " title="">09-26 10:29 kev <built-in method items of dict object at 0x7f2b390d9740></span>
+      <span class="run " title="">09-25 10:46 vendor:mikrotik <built-in method items of dict object at 0x7f2b390d9880></span>
+      <span class="run " title="">09-25 10:46 vendor:ubiquiti <built-in method items of dict object at 0x7f2b390d98c0></span>
+      <span class="run " title="">09-25 10:46 nvd <built-in method items of dict object at 0x7f2b390d9900></span>
+      <span class="run " title="">09-25 10:46 curated <built-in method items of dict object at 0x7f2b390d9940></span>
     </div></div>
     <p class="note">
       Красным — источник, который упал; наведи курсор, чтобы увидеть ошибку. Прогон при этом
