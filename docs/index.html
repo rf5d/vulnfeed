@@ -133,14 +133,14 @@
       <h1>Трекер уязвимостей и вендоров</h1>
       <p class="note" style="margin-top:5px">Новости вендоров, EOL и EOS, уязвимости из CISA KEV и NVD. Сборка автоматическая, правки руками затираются следующим прогоном.</p>
     </div>
-    <div class="stamp">собрано<br><b>05.11.2026 13:41 UTC</b></div>
+    <div class="stamp">собрано<br><b>06.11.2026 13:25 UTC</b></div>
   </header>
 
   <nav>
     <a href="#summary">Сводка</a>
     <a href="#news">Новости вендоров<span class="badge" data-count="news">74</span></a>
     <a href="#fresh">Свежие уязвимости<span class="badge" data-count="fresh">10</span></a>
-    <a href="#park">Весь парк<span class="badge">57</span></a>
+    <a href="#park">Весь парк<span class="badge">58</span></a>
     <a href="#changes">Изменения</a>
     <a href="#runs">Прогоны</a>
   </nav>
@@ -149,7 +149,7 @@
     <button class="fbtn" data-v="all" aria-pressed="true">Все вендоры</button>
     <button class="fbtn" data-v="Zyxel" aria-pressed="false">Zyxel 19</button>
     <button class="fbtn" data-v="Fortinet" aria-pressed="false">Fortinet 16</button>
-    <button class="fbtn" data-v="MikroTik" aria-pressed="false">MikroTik 9</button>
+    <button class="fbtn" data-v="MikroTik" aria-pressed="false">MikroTik 10</button>
     <button class="fbtn" data-v="Ubiquiti" aria-pressed="false">Ubiquiti 7</button>
     <button class="fbtn" data-v="Dahua" aria-pressed="false">Dahua 6</button>
     <button class="fbtn" data-v="TP-Link Omada" aria-pressed="false">TP-Link Omada 6</button>
@@ -1003,7 +1003,7 @@
   <section id="fresh">
     <div class="sec-head">
       <h2>Свежие уязвимости · за 60 дней</h2>
-      <span class="sec-note">10 записей · 3 в KEV · с 2026-09-06 · <a href="#top">наверх</a></span>
+      <span class="sec-note">10 записей · 3 в KEV · с 2026-09-07 · <a href="#top">наверх</a></span>
     </div>
     <div class="card" data-list>
 <div class="row" data-vendor="MikroTik" data-id="c:CVE-2026-67279">
@@ -1143,11 +1143,11 @@ of the attacker's own account.</div>  </div>
   <section id="park">
     <div class="sec-head">
       <h2>Весь парк · активные угрозы вне окна</h2>
-      <span class="sec-note">57 записей · <a href="#top">наверх</a></span>
+      <span class="sec-note">58 записей · <a href="#top">наверх</a></span>
     </div>
     <div class="card">
       <details>
-        <summary>Показать полный список (57)</summary>
+        <summary>Показать полный список (58)</summary>
         <div data-list>
 <div class="row" data-vendor="Zyxel" data-id="c:CVE-2024-11667">
   <div class="score crit">
@@ -1713,6 +1713,18 @@ of the attacker's own account.</div>  </div>
 <span class="chip bad">KEV</span>  </div>
   <button class="done" type="button" title="Отметить обработанным" aria-label="Отметить обработанным">✓</button>
 </div>
+<div class="row" data-vendor="MikroTik" data-id="c:CVE-2025-61481">
+  <div class="score crit">
+    10.0<small>CVSS</small>
+  </div>
+  <div>
+    <div class="cid"><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-61481" target="_blank" rel="noopener">CVE-2025-61481</a></div>
+    <div class="vend">MikroTik</div>
+<div class="desc">An issue in MikroTik RouterOS v.7.14.2 and SwOS v.2.18 exposes the WebFig management interface over cleartext HTTP by default, allowing an on-path attacker to execute injected JavaScript in the administrator’s browser and intercept credentials.</div>  </div>
+  <div>
+  </div>
+  <button class="done" type="button" title="Отметить обработанным" aria-label="Отметить обработанным">✓</button>
+</div>
 <div class="row" data-vendor="Dahua" data-id="c:CVE-2024-13985">
   <div class="score crit">
     10.0<small>CVSS</small>
@@ -1857,6 +1869,62 @@ resulting in a denial of service.</div>  </div>
     </div>
     <div class="card">
       <div class="ev">
+        <time>2026-11-06 13:25</time>
+        <div><b>CVE-2017-6884</b> (Zyxel) — in_kev: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-11-06 13:25</time>
+        <div><b>CVE-2017-6884</b> (Zyxel) — ransomware: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-11-06 13:25</time>
+        <div><b>CVE-2017-6884</b> (Zyxel) — description: Zyxel EMG2926 routers contain a command injection vulnerability located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute malicious commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI. → <b>A command injection vulnerability was discovered on the Zyxel EMG2926 home router with firmware V1.00(AAQT.4)b8. The vulnerability is located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute arbitrary commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-11-06 13:25</time>
+        <div><b>CVE-2020-9054</b> (Zyxel) — in_kev: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-11-06 13:25</time>
+        <div><b>CVE-2020-9054</b> (Zyxel) — description: Multiple Zyxel network-attached storage (NAS) devices contain a pre-authentication command injection vulnerability, which may allow a remote, unauthenticated attacker to execute arbitrary code. → <b>Multiple ZyXEL network-attached storage (NAS) devices running firmware version 5.21 contain a pre-authentication command injection vulnerability, which may allow a remote, unauthenticated attacker to execute arbitrary code on a vulnerable device. ZyXEL NAS devices achieve authentication by using the weblogin.cgi CGI executable. This program fails to properly sanitize the username parameter that is passed to it. If the username parameter contains certain characters, it can allow command injection with the privileges of the web server that runs on the ZyXEL device. Although the web server does not run as the root user, ZyXEL devices include a setuid utility that can be leveraged to run any command with root privileges. As such, it should be assumed that exploitation of this vulnerability can lead to remote code execution with root privileges. By sending a specially-crafted HTTP POST or GET request to a vulnerable ZyXEL device, a remote, unauthenticated attacker may be able to execute arbitrary code on the device. This may happen by directly connecting to a device if it is directly exposed to an attacker. However, there are ways to trigger such crafted requests even if an attacker does not have direct connectivity to a vulnerable devices. For example, simply visiting a website can result in the compromise of any ZyXEL device that is reachable from the client system. Affected products include: NAS326 before firmware V5.21(AAZF.7)C0 NAS520 before firmware V5.21(AASZ.3)C0 NAS540 before firmware V5.21(AATB.4)C0 NAS542 before firmware V5.21(ABAG.4)C0 ZyXEL has made firmware updates available for NAS326, NAS520, NAS540, and NAS542 devices. Affected models that are end-of-support: NSA210, NSA220, NSA220+, NSA221, NSA310, NSA310S, NSA320, NSA320S, NSA325 and NSA325v2</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-11-06 13:25</time>
+        <div><b>CVE-2026-7273</b> (Zyxel) — in_kev: 1 → <b>0</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-11-06 13:25</time>
+        <div><b>CVE-2026-7273</b> (Zyxel) — description: Zyxel GS1900 series switches contain a stack-based buffer overflow vulnerability in the CGI program which could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request. → <b>A stack-based buffer overflow vulnerability in the CGI program of Zyxel GS1900-48HPv2 firmware versions through 2.90(ABTQ.1)C0 could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-11-06 13:24</time>
+        <div><b>CVE-2017-6884</b> (Zyxel) — in_kev: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-11-06 13:24</time>
+        <div><b>CVE-2017-6884</b> (Zyxel) — ransomware: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-11-06 13:24</time>
+        <div><b>CVE-2017-6884</b> (Zyxel) — description: A command injection vulnerability was discovered on the Zyxel EMG2926 home router with firmware V1.00(AAQT.4)b8. The vulnerability is located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute arbitrary commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI. → <b>Zyxel EMG2926 routers contain a command injection vulnerability located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute malicious commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-11-06 13:24</time>
+        <div><b>CVE-2020-9054</b> (Zyxel) — in_kev: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-11-06 13:24</time>
+        <div><b>CVE-2020-9054</b> (Zyxel) — description: Multiple ZyXEL network-attached storage (NAS) devices running firmware version 5.21 contain a pre-authentication command injection vulnerability, which may allow a remote, unauthenticated attacker to execute arbitrary code on a vulnerable device. ZyXEL NAS devices achieve authentication by using the weblogin.cgi CGI executable. This program fails to properly sanitize the username parameter that is passed to it. If the username parameter contains certain characters, it can allow command injection with the privileges of the web server that runs on the ZyXEL device. Although the web server does not run as the root user, ZyXEL devices include a setuid utility that can be leveraged to run any command with root privileges. As such, it should be assumed that exploitation of this vulnerability can lead to remote code execution with root privileges. By sending a specially-crafted HTTP POST or GET request to a vulnerable ZyXEL device, a remote, unauthenticated attacker may be able to execute arbitrary code on the device. This may happen by directly connecting to a device if it is directly exposed to an attacker. However, there are ways to trigger such crafted requests even if an attacker does not have direct connectivity to a vulnerable devices. For example, simply visiting a website can result in the compromise of any ZyXEL device that is reachable from the client system. Affected products include: NAS326 before firmware V5.21(AAZF.7)C0 NAS520 before firmware V5.21(AASZ.3)C0 NAS540 before firmware V5.21(AATB.4)C0 NAS542 before firmware V5.21(ABAG.4)C0 ZyXEL has made firmware updates available for NAS326, NAS520, NAS540, and NAS542 devices. Affected models that are end-of-support: NSA210, NSA220, NSA220+, NSA221, NSA310, NSA310S, NSA320, NSA320S, NSA325 and NSA325v2 → <b>Multiple Zyxel network-attached storage (NAS) devices contain a pre-authentication command injection vulnerability, which may allow a remote, unauthenticated attacker to execute arbitrary code.</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-11-06 13:24</time>
+        <div><b>CVE-2026-7273</b> (Zyxel) — in_kev: 0 → <b>1</b></div>
+      </div>
+      <div class="ev">
+        <time>2026-11-06 13:24</time>
+        <div><b>CVE-2026-7273</b> (Zyxel) — description: A stack-based buffer overflow vulnerability in the CGI program of Zyxel GS1900-48HPv2 firmware versions through 2.90(ABTQ.1)C0 could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request. → <b>Zyxel GS1900 series switches contain a stack-based buffer overflow vulnerability in the CGI program which could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request.</b></div>
+      </div>
+      <div class="ev">
         <time>2026-11-05 13:41</time>
         <div><b>CVE-2017-6884</b> (Zyxel) — in_kev: 1 → <b>0</b></div>
       </div>
@@ -1960,62 +2028,6 @@ resulting in a denial of service.</div>  </div>
         <time>2026-11-04 13:27</time>
         <div><b>CVE-2026-76955</b> (Zyxel) — last_modified: 2026-11-03T02:16:53.720 → <b>2026-11-04T05:19:01.363</b></div>
       </div>
-      <div class="ev">
-        <time>2026-11-04 13:26</time>
-        <div><b>CVE-2017-6884</b> (Zyxel) — in_kev: 0 → <b>1</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-11-04 13:26</time>
-        <div><b>CVE-2017-6884</b> (Zyxel) — ransomware: 0 → <b>1</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-11-04 13:26</time>
-        <div><b>CVE-2017-6884</b> (Zyxel) — description: A command injection vulnerability was discovered on the Zyxel EMG2926 home router with firmware V1.00(AAQT.4)b8. The vulnerability is located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute arbitrary commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI. → <b>Zyxel EMG2926 routers contain a command injection vulnerability located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute malicious commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI.</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-11-04 13:26</time>
-        <div><b>CVE-2020-9054</b> (Zyxel) — in_kev: 0 → <b>1</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-11-04 13:26</time>
-        <div><b>CVE-2020-9054</b> (Zyxel) — description: Multiple ZyXEL network-attached storage (NAS) devices running firmware version 5.21 contain a pre-authentication command injection vulnerability, which may allow a remote, unauthenticated attacker to execute arbitrary code on a vulnerable device. ZyXEL NAS devices achieve authentication by using the weblogin.cgi CGI executable. This program fails to properly sanitize the username parameter that is passed to it. If the username parameter contains certain characters, it can allow command injection with the privileges of the web server that runs on the ZyXEL device. Although the web server does not run as the root user, ZyXEL devices include a setuid utility that can be leveraged to run any command with root privileges. As such, it should be assumed that exploitation of this vulnerability can lead to remote code execution with root privileges. By sending a specially-crafted HTTP POST or GET request to a vulnerable ZyXEL device, a remote, unauthenticated attacker may be able to execute arbitrary code on the device. This may happen by directly connecting to a device if it is directly exposed to an attacker. However, there are ways to trigger such crafted requests even if an attacker does not have direct connectivity to a vulnerable devices. For example, simply visiting a website can result in the compromise of any ZyXEL device that is reachable from the client system. Affected products include: NAS326 before firmware V5.21(AAZF.7)C0 NAS520 before firmware V5.21(AASZ.3)C0 NAS540 before firmware V5.21(AATB.4)C0 NAS542 before firmware V5.21(ABAG.4)C0 ZyXEL has made firmware updates available for NAS326, NAS520, NAS540, and NAS542 devices. Affected models that are end-of-support: NSA210, NSA220, NSA220+, NSA221, NSA310, NSA310S, NSA320, NSA320S, NSA325 and NSA325v2 → <b>Multiple Zyxel network-attached storage (NAS) devices contain a pre-authentication command injection vulnerability, which may allow a remote, unauthenticated attacker to execute arbitrary code.</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-11-04 13:26</time>
-        <div><b>CVE-2026-7273</b> (Zyxel) — in_kev: 0 → <b>1</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-11-04 13:26</time>
-        <div><b>CVE-2026-7273</b> (Zyxel) — description: A stack-based buffer overflow vulnerability in the CGI program of Zyxel GS1900-48HPv2 firmware versions through 2.90(ABTQ.1)C0 could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request. → <b>Zyxel GS1900 series switches contain a stack-based buffer overflow vulnerability in the CGI program which could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request.</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-11-03 13:13</time>
-        <div><b>CVE-2017-6884</b> (Zyxel) — in_kev: 1 → <b>0</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-11-03 13:13</time>
-        <div><b>CVE-2017-6884</b> (Zyxel) — ransomware: 1 → <b>0</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-11-03 13:13</time>
-        <div><b>CVE-2017-6884</b> (Zyxel) — description: Zyxel EMG2926 routers contain a command injection vulnerability located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute malicious commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI. → <b>A command injection vulnerability was discovered on the Zyxel EMG2926 home router with firmware V1.00(AAQT.4)b8. The vulnerability is located in the diagnostic tools, specifically the nslookup function. A malicious user may exploit numerous vectors to execute arbitrary commands on the router, such as the ping_ip parameter to the expert/maintenance/diagnostic/nslookup URI.</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-11-03 13:13</time>
-        <div><b>CVE-2020-9054</b> (Zyxel) — in_kev: 1 → <b>0</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-11-03 13:13</time>
-        <div><b>CVE-2020-9054</b> (Zyxel) — description: Multiple Zyxel network-attached storage (NAS) devices contain a pre-authentication command injection vulnerability, which may allow a remote, unauthenticated attacker to execute arbitrary code. → <b>Multiple ZyXEL network-attached storage (NAS) devices running firmware version 5.21 contain a pre-authentication command injection vulnerability, which may allow a remote, unauthenticated attacker to execute arbitrary code on a vulnerable device. ZyXEL NAS devices achieve authentication by using the weblogin.cgi CGI executable. This program fails to properly sanitize the username parameter that is passed to it. If the username parameter contains certain characters, it can allow command injection with the privileges of the web server that runs on the ZyXEL device. Although the web server does not run as the root user, ZyXEL devices include a setuid utility that can be leveraged to run any command with root privileges. As such, it should be assumed that exploitation of this vulnerability can lead to remote code execution with root privileges. By sending a specially-crafted HTTP POST or GET request to a vulnerable ZyXEL device, a remote, unauthenticated attacker may be able to execute arbitrary code on the device. This may happen by directly connecting to a device if it is directly exposed to an attacker. However, there are ways to trigger such crafted requests even if an attacker does not have direct connectivity to a vulnerable devices. For example, simply visiting a website can result in the compromise of any ZyXEL device that is reachable from the client system. Affected products include: NAS326 before firmware V5.21(AAZF.7)C0 NAS520 before firmware V5.21(AASZ.3)C0 NAS540 before firmware V5.21(AATB.4)C0 NAS542 before firmware V5.21(ABAG.4)C0 ZyXEL has made firmware updates available for NAS326, NAS520, NAS540, and NAS542 devices. Affected models that are end-of-support: NSA210, NSA220, NSA220+, NSA221, NSA310, NSA310S, NSA320, NSA320S, NSA325 and NSA325v2</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-11-03 13:13</time>
-        <div><b>CVE-2026-7273</b> (Zyxel) — in_kev: 1 → <b>0</b></div>
-      </div>
-      <div class="ev">
-        <time>2026-11-03 13:13</time>
-        <div><b>CVE-2026-7273</b> (Zyxel) — description: Zyxel GS1900 series switches contain a stack-based buffer overflow vulnerability in the CGI program which could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request. → <b>A stack-based buffer overflow vulnerability in the CGI program of Zyxel GS1900-48HPv2 firmware versions through 2.90(ABTQ.1)C0 could allow a LAN-based, unauthenticated attacker to exploit the flaw and potentially execute OS commands via a crafted HTTP request.</b></div>
-      </div>
     </div>
   </section>
 
@@ -2026,20 +2038,20 @@ resulting in a denial of service.</div>  </div>
       <span class="sec-note"><a href="#top">наверх</a></span>
     </div>
     <div class="card"><div class="runs">
-      <span class="run " title="">11-05 13:41 vendor:ubiquiti <built-in method items of dict object at 0x7fc1634c24c0></span>
-      <span class="run " title="">11-05 13:41 nvd <built-in method items of dict object at 0x7fc1634c2500></span>
-      <span class="run " title="">11-05 13:41 curated <built-in method items of dict object at 0x7fc1634c2540></span>
-      <span class="run " title="">11-05 13:41 vendor:mikrotik <built-in method items of dict object at 0x7fc1634c2580></span>
-      <span class="run " title="">11-05 13:40 kev <built-in method items of dict object at 0x7fc1634c25c0></span>
-      <span class="run " title="">11-04 13:27 vendor:ubiquiti <built-in method items of dict object at 0x7fc1634c2640></span>
-      <span class="run " title="">11-04 13:27 nvd <built-in method items of dict object at 0x7fc1634c2680></span>
-      <span class="run " title="">11-04 13:27 curated <built-in method items of dict object at 0x7fc1634c26c0></span>
-      <span class="run " title="">11-04 13:27 vendor:mikrotik <built-in method items of dict object at 0x7fc1634c2700></span>
-      <span class="run " title="">11-04 13:26 kev <built-in method items of dict object at 0x7fc1634c2600></span>
-      <span class="run " title="">11-03 13:13 vendor:mikrotik <built-in method items of dict object at 0x7fc1634c2740></span>
-      <span class="run " title="">11-03 13:13 vendor:ubiquiti <built-in method items of dict object at 0x7fc1634c2780></span>
-      <span class="run " title="">11-03 13:13 nvd <built-in method items of dict object at 0x7fc1634c27c0></span>
-      <span class="run " title="">11-03 13:13 curated <built-in method items of dict object at 0x7fc1634c2800></span>
+      <span class="run " title="">11-06 13:25 vendor:mikrotik <built-in method items of dict object at 0x7fc9a84d65c0></span>
+      <span class="run " title="">11-06 13:25 vendor:ubiquiti <built-in method items of dict object at 0x7fc9a84d6600></span>
+      <span class="run " title="">11-06 13:25 nvd <built-in method items of dict object at 0x7fc9a84d6640></span>
+      <span class="run " title="">11-06 13:25 curated <built-in method items of dict object at 0x7fc9a84d6680></span>
+      <span class="run " title="">11-06 13:24 kev <built-in method items of dict object at 0x7fc9a84d66c0></span>
+      <span class="run " title="">11-05 13:41 vendor:ubiquiti <built-in method items of dict object at 0x7fc9a84d6740></span>
+      <span class="run " title="">11-05 13:41 nvd <built-in method items of dict object at 0x7fc9a84d6780></span>
+      <span class="run " title="">11-05 13:41 curated <built-in method items of dict object at 0x7fc9a84d67c0></span>
+      <span class="run " title="">11-05 13:41 vendor:mikrotik <built-in method items of dict object at 0x7fc9a84d6800></span>
+      <span class="run " title="">11-05 13:40 kev <built-in method items of dict object at 0x7fc9a84d6700></span>
+      <span class="run " title="">11-04 13:27 vendor:ubiquiti <built-in method items of dict object at 0x7fc9a84d6840></span>
+      <span class="run " title="">11-04 13:27 nvd <built-in method items of dict object at 0x7fc9a84d6880></span>
+      <span class="run " title="">11-04 13:27 curated <built-in method items of dict object at 0x7fc9a84d68c0></span>
+      <span class="run " title="">11-04 13:27 vendor:mikrotik <built-in method items of dict object at 0x7fc9a84d6900></span>
     </div></div>
     <p class="note">
       Красным — источник, который упал; наведи курсор, чтобы увидеть ошибку. Прогон при этом
